@@ -3,7 +3,7 @@
 
 
 <body>
-  
+
   <!-- Main body part  -->
   <div id="main-content">
     <div class="container-fluid">
@@ -24,7 +24,7 @@
           <div class="col-lg-12  container-fluid">
             <div class="card">
               <div class="body">
-                
+
 
                 <form action="<?php echo base_url(). 'CalonGraduasi/tambah_aksi'?>" method='post' >
                   <div class="form-group row">
@@ -33,7 +33,16 @@
                       <select class="form-control show-tick select2" name="id_penerima_bantuan">
                         <option value=""></option>
                         <?php foreach($penerima as $prm){ ?>
-                          <option value="<?php echo $prm['id_penerima_bantuan']; ?>"><?php echo $prm['nik']; ?>-<?php echo $prm['nama']; ?> </option>
+                          <?php $cek=0;
+                          foreach($dataterisi as $ds){
+                            if($ds['id_penerima_bantuan'] == $prm['id_penerima_bantuan']) $cek++;
+
+                          }
+                          if($cek == '0'){ ?>
+                            <option value="<?php echo $prm['id_penerima_bantuan']; ?>"><?php echo $prm['nik']; ?>-<?php echo $prm['nama']; ?> </option>
+
+                          <?php } ?>
+                          
                         <?php } ?>
                       </select>
                     </div>
@@ -42,12 +51,11 @@
                   <div class="form-group row">
                     <label  class="col-sm-4 ">Periode <span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                      <select class="form-control show-tick select2" name="id_periode" required>
-                        <option value=""></option>
-                        <?php foreach($period as $prd){ ?>
-                          <option value="<?php echo $prd['id_periode']; ?>"><?php echo $prd['nama_periode']; ?></option>
-                        <?php } ?>
-                      </select>
+                      <?php foreach($period as $prd){ ?>
+                        <input class="form-control" type="text" disabled name="" value="<?php echo $prd['nama_periode']; ?>" > 
+                        <input type="hidden" name="id_periode" value="<?php echo $prd['id_periode']; ?>">
+                      <?php } ?>
+
                     </div>
                   </div>
 
@@ -60,7 +68,7 @@
                           <option value=""></option>
                           <?php foreach($rentang_nilai as $rn){ ?>
                             <?php if ($rn['id_kriteria'] == $ktr['id_kriteria']){ ?>
-                              <option value="<?php echo $rn['nilai']; ?>"><?php echo $rn['jenis_rentang']; ?></option>
+                              <option value="<?php echo $rn['nilai']." ".$rn['id_rentang']; ?>"><?php echo $rn['jenis_rentang']; ?></option>
                             <?php } ?>
 
                           <?php } ?>

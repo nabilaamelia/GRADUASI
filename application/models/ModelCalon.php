@@ -6,12 +6,12 @@ class ModelCalon extends CI_Model {
 
     }
     public function tampil_kuis(){
-            $this->db->select('*');
-            $this->db->from('kuisioner');
+        $this->db->select('*');
+        $this->db->from('kuisioner');
 
-            return $this->db->get();
+        return $this->db->get();
 
-        }
+    }
     public function tampil_detail(){
         $this->db->select('*');
         $this->db->from('detail_periode');
@@ -27,10 +27,26 @@ class ModelCalon extends CI_Model {
         $this->db->where($where);
         return $this->db->get();
     }
-   
+    
     public function tambah_data($data,$table){
         $this->db->insert($table,$data);
         return true;
+    }
+
+
+    public function edit_kuis($where){
+        $this->db->select('*');
+        $this->db->from('detail_periode');
+        $this->db->join('penerima_bantuan', 'penerima_bantuan.id_penerima_bantuan=detail_periode.id_penerima_bantuan');
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
+    public function filter_edit($table, $where)
+    {
+        $this->db->from($table);
+        $this->db->where($where);
+        return $this->db->get();
     }
 
     

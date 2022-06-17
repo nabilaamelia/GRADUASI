@@ -68,19 +68,19 @@ class SuperAdmin extends CI_Controller{
 
     public function DtCalonSuper()
     {
-     $data['penerima'] = $this->ModelCalon->tampil_detail()->result_array();
-     $this->load->view('Super/header');
-     $this->load->view('Super/sidebar');
-     $this->load->view('Super/DtCalon', $data);
-     $this->load->view('Super/footer');
+       $data['penerima'] = $this->ModelCalon->tampil_detail()->result_array();
+       $this->load->view('Super/header');
+       $this->load->view('Super/sidebar');
+       $this->load->view('Super/DtCalon', $data);
+       $this->load->view('Super/footer');
 
 
- }
+   }
 
 
 
- public function Hasil()
- {
+   public function Hasil()
+   {
     $data['id_periode'] = $this->input->post('id_periode');
     $where = array(
         'detail_periode.id_periode' => $data['id_periode']
@@ -177,12 +177,12 @@ public function edit_data($id)
             'nohp'        => $nohp,
             'level'       => $level,
             'username'    => $username,
-            'password'    => md5($password),
             'status'      => $status
 
 
         );
     }
+
     else{
         $config ['upload_path'] = './uploads';
         $config ['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -199,7 +199,6 @@ public function edit_data($id)
             'nohp'        => $nohp,
             'level'       => $level,
             'username'    => $username,
-            'password'    => md5($password),
             'status'      => $status,
             'foto'        => $foto
         );

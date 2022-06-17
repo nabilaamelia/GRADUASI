@@ -5,8 +5,9 @@ class ModelKribo extends CI_Model {
         return $this->db->get($table);
 
     }
+
     
-   
+    
     public function tambah_data($data,$table){
         $this->db->insert($table,$data);
         return true;

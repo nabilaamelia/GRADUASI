@@ -5,12 +5,36 @@
     <div class="container-fluid">
         <!-- Page header section  -->
         <div class="block-header">
-            <div class="row clearfix">
+
+            <form class="navbar-form col-sm-12" action="<?= base_url('Dashboard') ?>" method='post'>
+                <div class="row clearfix">
+                    <div class="col-sm-5">
+                        <select class="form-control show-tick select2" name="id_periode">
+                            <?php foreach ($periode as $prd ) { ?>
+                                <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
+                                    <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
+                                <?php } else{ ?>
+                                    <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                <?php } ?>
+                                
+                            <?php }?>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary" type="submit">GET</button> 
+                    </div>
+                </div>
+            </form>
+
+
+
+            <div class="row clearfix mt-3">
+
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <h1>Dashboard</h1>
                     <span>JustDo Dashboard,</span>
                 </div>
-                
+
             </div>
         </div>
         <div class="row clearfix">
@@ -19,9 +43,9 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars text-muted"></i>
                     </button>
-                    
+
                 </nav>
-                
+
             </div>
             <div class="col-12">
                 <div class="card theme-bg gradient">
@@ -39,7 +63,7 @@
 
                                         ?>
                                         <div class="mt-3 h1"><?php echo $jumlahprm; ?></div>
-                                        
+
                                     </div>
 
                                 </div>
@@ -58,7 +82,7 @@
 
                                         ?>
                                         <div class="mt-3 h1"><?php echo $jumlahktr; ?></div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +100,7 @@
 
                                         ?>
                                         <div class="mt-3 h1"><?php echo $jumlahprd; ?></div>
-                                        
+
                                     </div>
                                 </div>
                             </div>

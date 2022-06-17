@@ -1,8 +1,5 @@
 <!doctype html>
 	<html lang="en">
-
-
-
 	<body>
 
 		<!-- Main body part  -->
@@ -27,41 +24,61 @@
 								<div class="body">
 
 
-									<form <!-- action="<?php echo base_url(). 'CalonGraduasi/edit_aksi'?>" --> method='post' >
+									<form method='post' action="<?php echo base_url()?>CalonGraduasi/EditKuis" >
 										<div class="form-group row">
 											<label  class="col-sm-4 ">Nik / Nama <span class="text-danger">*</span></label>
 											<div class="col-sm-8">
-												<select class="form-control show-tick select2" name="id_penerima_bantuan">
-													<option value=""></option>
-													<?php foreach($penerima as $prm){ ?>
-														<option value="<?php echo $prm['id_penerima_bantuan']; ?>"><?php echo $prm['nik']; ?>-<?php echo $prm['nama']; ?> </option>
-													<?php } ?>
-												</select>
+												<?php foreach($penerima as $prm){ ?>
+													<input class="form-control" type="text" disabled name="" value="<?php echo $prm['nik']; ?>-<?php echo $prm['nama']?>" > 
+
+												<?php } ?>
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label  class="col-sm-4 ">Periode <span class="text-danger">*</span></label>
 											<div class="col-sm-8">
-												<select class="form-control show-tick select2" name="id_periode" required>
-													<option value=""></option>
-													<?php foreach($period as $prd){ ?>
-														<option value="<?php echo $prd['id_periode']; ?>"><?php echo $prd['nama_periode']; ?></option>
-													<?php } ?>
-												</select>
+												<?php foreach($period as $prd){ ?>
+													<input class="form-control" type="text" disabled name="" value="<?php echo $prd['nama_periode']; ?>" > 
+
+												<?php } ?>
+
 											</div>
 										</div>
 
 										<?php  foreach ($kriteria as $ktr){  ?>
+											<?php $cek1= 0; 
+											foreach ($kuisioner as $kuis ) { ?>
+												<?php if ($ktr['id_kriteria'] == $kuis['id_kriteria']) { ?>
+													<input type="hidden" name="id_kuisioner<?php echo $ktr['id_kriteria'] ?>" value="<?php echo $kuis['id_kuisioner']?>">
+
+												<?php }?>
+											<?php } ?>
+
 											<div class="form-group row">
 												<label  class="col-sm-4 "><?php echo $ktr['jenis_kriteria']?> <span class="text-danger">*</span></label>
 												<div class="col-sm-8">
 													<input type="hidden" value="<?php echo $ktr['id_kriteria']?>" name="id_kriteria<?php echo $ktr['id_kriteria']?>">
 													<select class="form-control show-tick select2" name="nilai<?php  echo $ktr['id_kriteria'] ?>">
-														<option value=""></option>
+
 														<?php foreach($rentang_nilai as $rn){ ?>
 															<?php if ($rn['id_kriteria'] == $ktr['id_kriteria']){ ?>
-																<option value="<?php echo $rn['nilai']; ?>"><?php echo $rn['jenis_rentang']; ?></option>
+
+																<?php $cek = 0;
+																foreach ($kuisioner as $kuis) {
+																	if($kuis['id_rentang'] == $rn['id_rentang']) $cek++;
+
+																} 
+																if($cek > 0) { ?>
+																	<option value="<?php echo $rn['nilai']." ".$rn['id_rentang']; ?>" selected><?php echo $rn['jenis_rentang']; ?></option>
+
+																<?php } else { ?>
+																	<option value="<?php echo $rn['nilai']." ".$rn['id_rentang']; ?>"><?php echo $rn['jenis_rentang']; ?></option>
+																<?php } ?>
+
+
+
+
 															<?php } ?>
 
 														<?php } ?>
@@ -74,7 +91,7 @@
 
 										<div class="col-sm-12 text-right">
 											<button type="submit" class="btn btn-primary">Edit</button>
-											<button type="submit" class="btn btn-outline-secondary">Clear</button>
+											<button type="clear" class="btn btn-outline-secondary">Clear</button>
 										</div>
 
 

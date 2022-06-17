@@ -18,10 +18,14 @@ class CalonGraduasi extends CI_Controller{
 public function index()
 
 {
+    $where = array (
+        'id_periode'  => $this->session->userdata('id_periode')
+    );
+    $data['dataterisi'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
     $data['penerima'] = $this->ModelCalon->tampil_data('penerima_bantuan')->result_array();
     $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
     $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
-    $data['period'] = $this->ModelCalon->tampil_data('periode')->result_array();
+    $data['period'] = $this->ModelPeriode->filter('periode', $where)->result_array();
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('Proses/FormKuisioner', $data);
@@ -39,28 +43,62 @@ public function tambah_aksi()
         'id_periode'           => $id_periode
     );
 
+
     $tambah = $this->ModelCalon->tambah_data($data1, 'detail_periode');
     if($tambah) {
         $id = $this->db->insert_id();
+
         foreach ($kriteria as $ktr ){
             $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
             $nilai         =   $this->input->post('nilai'. $ktr['id_kriteria']);
+            $pecah = explode(" ", $nilai);
             $data = array(
-                'nilai'                   => $nilai,
+                'nilai'                   => $pecah[0],
                 'id_kriteria'             => $id_kriteria,
+                'id_rentang'              => $pecah[1],
                 'id_petugas'              => $this->session->userdata('id_petugas'),
                 'id_detail_periode'       => $id
 
             );
             $this->ModelCalon->tambah_data($data, 'kuisioner');
         }
-
     }
 
     redirect(CalonGraduasi);
 
     
 }
+
+public function EditKuis()
+{
+
+    $kriteria              = $this->ModelKribo->tampil_data('kriteria')->result_array();
+
+    foreach ($kriteria as $ktr ){
+        $id_kuisioner  =   $this->input->post('id_kuisioner'. $ktr['id_kriteria']);
+        $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
+        $nilai         =   $this->input->post('nilai'. $ktr['id_kriteria']);
+        $pecah = explode(" ", $nilai);
+        $data = array(
+            'nilai'                   => $pecah[0],
+            'id_kriteria'             => $id_kriteria,
+            'id_rentang'              => $pecah[1],
+
+
+        );
+        $where = array(
+            'id_kuisioner' => $id_kuisioner 
+        );
+        $this->ModelPenerima->edit_data($data, $where, 'kuisioner');
+    }
+    
+
+    redirect(DtKuisioner);
+
+    
+}
+
+
 
 
 }

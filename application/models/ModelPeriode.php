@@ -20,6 +20,20 @@ class ModelPeriode extends CI_Model {
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	public function tampilperiode($table){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->order_by('id_periode', 'DESC');
+		return $this->db->get();
+	}
+
+	public function filter($table, $where)
+	{
+		$this->db->from($table);
+		$this->db->where($where);
+		return $this->db->get();
+	}
 }
 
 ?>

@@ -20,18 +20,16 @@
                     <form action="<?= base_url('Hasil') ?>" method='post' >
                         <div class="form-group row">
                             <label  class="col-sm-2 ">Periode <span class="text-danger"></span></label>
-                            <form>
-                                <div class="col-sm-2">
-                                    <select class="form-control show-tick select2" name="id_periode">
-                                        <?php foreach ($periode as $prd ) { ?>
-                                            <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
-                                        <?php }?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-primary" type="submit">GET</button>
-                                </div>
-                            </form>
+                            <div class="col-sm-2">
+                                <select class="form-control show-tick select2" name="id_periode">
+                                    <?php foreach ($periode as $prd ) { ?>
+                                        <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary" type="submit">GET</button>
+                            </div>
                         </div>
                     </form>
                 </div>
