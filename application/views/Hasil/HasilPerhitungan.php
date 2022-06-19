@@ -23,7 +23,13 @@
                             <div class="col-sm-2">
                                 <select class="form-control show-tick select2" name="id_periode">
                                     <?php foreach ($periode as $prd ) { ?>
-                                        <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                        <?php if($prd['id_periode'] == $id_periode) { ?>
+                                            <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
+
+                                        <?php } else { ?>
+                                            <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                        <?php } ?>
+                                        
                                     <?php }?>
                                     
                                 </select>
@@ -36,7 +42,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-12 col-sm-12 text-lg-right">
-                    <?=$this->uri->segment(1) == 'Perhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('Perhitungan') ?>" class="btn btn-primary">Detail Perhitungan</a>
+                    <?=$this->uri->segment(1) == 'Perhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('Perhitungan/hasil/'. $id_periode) ?>" class="btn btn-primary">Detail Perhitungan</a>
 
                 </div>
 
@@ -60,13 +66,12 @@
                                     $no = 1;
                                     foreach($penerima as $prm) { ?>
                                         <tr>
-                                            <td><?= $no++; ?></td>
+                                            <th><?= $no++; ?></th>
                                             <td><?= $prm['nama'] ?></td>
-                                            <td>7</td>
-
+                                            <td><?php echo $prm['total'] ?></td>
                                         </tr>
-                                    <?php } ?>
 
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
