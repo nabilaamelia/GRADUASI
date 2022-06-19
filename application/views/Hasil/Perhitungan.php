@@ -122,6 +122,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                        $no = 1;
+                                        foreach($penerima as $prm) { ?>
+                                        <tr>
+                                            <th><?= $no++; ?></th>
+                                            <td><?= $prm['nama'] ?></td>
+                                            
+
+                                            
+                                            
+                                            
+                                            
+                                        
+                                    </tr>
+                                <?php } ?>
                                
                                 
                             </tbody>
@@ -170,6 +185,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            
+                            
                              
                             </tbody>
                         </table>

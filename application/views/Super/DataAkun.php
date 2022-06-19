@@ -7,8 +7,6 @@
             <div class="row clearfix">
                 <div class="col-xl-6 col-md-5 col-sm-12">
                     <h1>Data Petugas</h1>
-                    <!-- Button trigger modal -->
-
 
                 </div>
                 <div class="col-xl-6 col-md-7 col-sm-12 text-md-right">
@@ -37,22 +35,16 @@
 
                                 <div class="row clearfix">
                                     <div class="col-12">
-                                        <div class="card">
-                                            <form>
-                                                <div class="section_title">
-                                                    <div class="">
-                                                        <div class="input-group">
-                                                            <button type="button" class="btn btn-primary"
-                                                            data-toggle="modal" data-target="#Tambah">
-                                                            Tambah Data
-                                                        </button>
+                                        <div class="body">
+                                            <div class="col-12 text-lg-right">
+                                                <div>
+                                                    <div class="btn-group  ">
+                                                        <a data-toggle="modal" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+
                                                     </div>
                                                 </div>
-                                                <div>
-
-                                                </div>
                                             </div>
-                                        </form>
+                                        </div>
 
 
 
@@ -111,10 +103,7 @@
                                                                     <h5 class="modal-title"
                                                                     id="exampleModalLabel">Edit Data
                                                                 Petugas</h5>
-                                                                <button type="button"
-                                                                class="btn-close hidden-md"
-                                                                data-dismiss="modal"
-                                                                aria-label="Close">X</button>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="<?php echo base_url(). 'SuperAdmin/edit_data/'.$ptg['id_petugas'];
@@ -272,7 +261,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Petugas</h5>
-                <button type="button" class="btn-close hidden-md" data-dismiss="modal" aria-label="Close">X</button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo base_url(). 'SuperAdmin/tambah_aksi';

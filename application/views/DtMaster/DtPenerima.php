@@ -85,8 +85,8 @@
                                             <td><?php echo $prm['nama'] ?></td>
                                             <td><?php echo $prm['alamat'] ?></td>
                                             <td><?php echo $prm['angkatan'] ?></td>
-                                            <td><?php echo $prm['status_bantuan'] ?></td>
                                             <td><?php echo $prm['kategori'] ?></td>
+                                            <td><?php echo $prm['status_bantuan'] ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-default btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prm['id_penerima_bantuan']; ?>"><i class="fa fa-pencil"></i></button>
                                                 <button type="button" id="btn-hapus" class="btn btn-default btn-sm" title="Delete" href="<?php echo base_url().'PenerimaBantuan/hapus_data/'.$prm['id_penerima_bantuan']; ?>" ><i class="fa fa-trash-o"></i></button>
@@ -116,7 +116,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data Penerima Bantuan</h5>
-                    <button type="button" class="btn-close hidden-md"  data-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo base_url(). 'PenerimaBantuan/tambah_aksi';
@@ -183,7 +183,7 @@ foreach($penerima as $prm) : ?>
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Data Penerima Bantuan</h5>
-            <button type="button" class="btn-close hidden-md"  data-dismiss="modal" aria-label="Close">X</button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
             <form action="<?php echo base_url(). 'PenerimaBantuan/edit_data/'.$prm['id_penerima_bantuan'];

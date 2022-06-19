@@ -119,8 +119,8 @@
                             <li <?=$this->uri->segment(1) == 'PenerimaBantuan' ||  $this->uri->segment(1) == 'KriBo' || $this->uri->segment(1) == 'Periode' ? 'class="active"' : '' ?>>
                                 <a href="#Doctors" class="has-arrow"><i class="fa fa-folder"></i><span>DATA MASTER</span></a>
                                 <ul>
-                                    <li <?=$this->uri->segment(1) == 'PenerimaBantuan'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('PenerimaBantuan') ?>">Data Penerima Bantuan</a></li>
                                     <li <?=$this->uri->segment(1) == 'Periode'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('Periode') ?>">Periode Graduasi</a></li>
+                                    <li <?=$this->uri->segment(1) == 'PenerimaBantuan'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('PenerimaBantuan') ?>">Data Penerima Bantuan</a></li>
                                     <li <?=$this->uri->segment(1) == 'KriBo'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('KriBo') ?>">Data Kriteria dan Bobot</a></li>
 
 
@@ -137,7 +137,7 @@
 
                             </li>
                             <li <?=$this->uri->segment(1) == 'Perhitungan' || $this->uri->segment(1) == 'Hasil'  ? 'class="active"' : '' ?>>
-                                <a href="<?php echo base_url('Hasil') ?>"><i class="fa fa-th-list"></i> <span>LAPORAN SELEKSI</span></a>
+                                <a href="<?php echo base_url('Hasil') ?>"><i class="fa fa-th-list"></i> <span>LAPORAN HASIL SELEKSI</span></a>
                             </li>
 
                         </ul>

@@ -30,6 +30,8 @@ class DtKuisioner extends CI_Controller{
         $this->load->view('Proses/EditKuis', $data);
         $this->load->view('templates/footer');
 
+        
+
 
     }
 

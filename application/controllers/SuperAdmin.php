@@ -17,11 +17,27 @@ class SuperAdmin extends CI_Controller{
 
     public function Dashboard()
     {
+        $id = $this->input->post('id_periode');
+        $data['periode'] = $this->ModelPeriode->tampilperiode('periode')->result_array();
+
+        if($id == ''){
+            if($this->session->userdata('id_periode') == '' ){
+                $this->session->set_userdata('id_periode', $data['periode']['0']['id_periode']);
+            }  
+        }
+        else {
+            $this->session->set_userdata('id_periode', $id);
+        }
+
+        $where = array(
+            'id_periode'  => $this->session->userdata('id_periode')
+        );
+
         $data['penerima'] = $this->ModelPenerima->tampil_data();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         $data['period'] = $this->ModelCalon->tampil_data('periode')->result_array();
         $data['petugas'] = $this->ModelPetugas->tampil_data();
-        $data['calon'] = $this->ModelCalon->tampil_detail()->result_array();
+        $data['calon'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
         $this->load->view('Super/header');
         $this->load->view('Super/sidebar');
         $this->load->view('Super/Dashboard', $data);

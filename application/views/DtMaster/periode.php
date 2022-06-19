@@ -71,7 +71,7 @@
                                                         <div class="modal-content">
                                                           <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Data Periode</h5>
-                                                            <button type="button" class="btn-close hidden-md"  data-dismiss="modal" aria-label="Close">X</button>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <form action="<?php echo base_url(). 'Periode/edit_data/'.$prd['id_periode'];
@@ -147,7 +147,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tambah Data Periode Graduasi</h5>
-        <button type="button" class="btn-close hidden-md"  data-dismiss="modal" aria-label="Close">X</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="modal-body">
         <form action="<?php echo base_url(). 'Periode/tambah_aksi';

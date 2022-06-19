@@ -25,6 +25,7 @@
                                     <?php foreach ($periode as $prd ) { ?>
                                         <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
                                     <?php }?>
+                                    
                                 </select>
                             </div>
                             <div class="col-sm-2">
