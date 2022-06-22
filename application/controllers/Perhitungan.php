@@ -32,6 +32,28 @@ class Perhitungan extends CI_Controller{
     }
 
 
+    public function Print()
+    {
+        
+
+        $this->load->library('pdfgenerator');
+
+        // / title dari pdf
+        $this->data['title_pdf'] = 'Detail Perhitungan';
+
+        // filename dari pdf ketika didownload
+        $file_pdf = 'Detail Perhitungan Rekomendasi Graduasi PKH';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        $html = $this->load->view('Hasil/view_print', $this->data, true);
+
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+
 
     
 }

@@ -55,7 +55,7 @@
                             <table class="table table-bordered table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th><strong>No</strong></th>
+                                        <th width="5"><strong>No</strong></th>
                                         <th><strong>Nama</strong></th>
                                         <th><strong>Total</strong></th>
 

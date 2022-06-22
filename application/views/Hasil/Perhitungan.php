@@ -6,6 +6,10 @@
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <h1>Detail Perhitungan</h1>
+
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
+                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Perhitungan/Print')?>" class="btn btn-primary">Cetak Detail Perhitungan <i class="fa fa-print"></i></a>
                 </div>
             </div>
         </div>
@@ -17,17 +21,7 @@
                 <h2>Matrik Keputusan / Nilai Awal</h2>
                 <ul class="header-dropdown dropdown">
                     <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu theme-bg gradient">
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> View Details</a></li>
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Share</a></li>
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Copy to</a></li>
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-folder"></i> Move to</a></li>
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-edit"></i> Rename</a></li>
-                            <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-trash"></i> Delete</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
             <div class="col-12">
@@ -51,7 +45,7 @@
                                     $no = 1;
                                     foreach($penerima as $prm) { ?>
                                         <tr>
-                                            <th><?= $no++; ?></th>
+                                            <th class="col-md-1 text-center"><?= $no++; ?></th>
                                             <td><?= $prm['nama'] ?></td>
 
                                             <?php 
@@ -66,7 +60,7 @@
                                                     }
                                                 } if($cek > 0) { ?>
 
-                                                    <td><?= $nilai ?></td>
+                                                    <td class="col-md-1 text-center"><?= $nilai ?></td>
 
                                                 <?php } ?>
 
@@ -103,9 +97,9 @@
                                         $no = 0;
                                         foreach ($kriteria as $ktr){?>
                                             <?php if($ktr['atribut'] == 'Benefit') { ?>
-                                                <th class="col-md-1 text-center"><strong ><?php  echo $ktr['max']->nilai ?></strong></th>
+                                                <th class="col-md-1 text-center"><?php  echo $ktr['max']->nilai ?></th>
                                             <?php } else { ?>
-                                                <th class="col-md-1 text-center"><strong ><?php  echo $ktr['min']->nilai ?></strong></th>
+                                                <th class="col-md-1 text-center"><?php  echo $ktr['min']->nilai ?></th>
                                             <?php } ?>
 
                                         <?php } ?>
@@ -126,17 +120,7 @@
 
                     <ul class="header-dropdown dropdown">
                         <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                            <ul class="dropdown-menu theme-bg gradient">
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> View Details</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Share</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Copy to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-folder"></i> Move to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-edit"></i> Rename</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-trash"></i> Delete</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="col-12">
@@ -160,11 +144,11 @@
                                         $no = 1;
                                         foreach($penerima as $prm) { ?>
                                             <tr>
-                                                <th><?= $no++; ?></th>
+                                                <th class="col-md-1 text-center"><?= $no++; ?></th>
                                                 <td><?= $prm['nama'] ?></td>
 
                                                 <?php 
-                                                
+
                                                 foreach($kriteria as $ktr) {
                                                     $cek = 0;
                                                     foreach($kuisioner as $kuis) {
@@ -183,7 +167,7 @@
 
                                                         }
                                                     } if ($cek > 0) { ?>
-                                                        <td><?= number_format($normalisasi, 2) ?></td>
+                                                        <td class="col-md-1 text-center"><?= number_format($normalisasi, 2) ?></td>
                                                     <?php } ?>
                                                 <?php } ?>
 
@@ -208,17 +192,7 @@
 
                     <ul class="header-dropdown dropdown">
                         <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                            <ul class="dropdown-menu theme-bg gradient">
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> View Details</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Share</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Copy to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-folder"></i> Move to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-edit"></i> Rename</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-trash"></i> Delete</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="col-12">
@@ -242,11 +216,11 @@
                                         $no = 1;
                                         foreach($penerima as $prm) { ?>
                                             <tr>
-                                                <th><?= $no++; ?></th>
+                                                <th class="col-md-1 text-center"><?= $no++; ?></th>
                                                 <td><?= $prm['nama'] ?></td>
 
                                                 <?php 
-                                                
+
                                                 foreach($kriteria as $ktr) {
 
                                                     $cek = 0;
@@ -268,7 +242,7 @@
 
                                                         }
                                                     } if ($cek > 0) { ?>
-                                                        <td><?= number_format($preferensi, 2) ?></td>
+                                                        <td class="col-md-1 text-center"><?= number_format($preferensi, 2) ?></td>
                                                     <?php } ?>
                                                 <?php } ?>
 
@@ -295,17 +269,7 @@
 
                     <ul class="header-dropdown dropdown">
                         <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                            <ul class="dropdown-menu theme-bg gradient">
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-eye"></i> View Details</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-share-alt"></i> Share</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-copy"></i> Copy to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-folder"></i> Move to</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-edit"></i> Rename</a></li>
-                                <li><a href="javascript:void(0);"><i class="dropdown-icon fa fa-trash"></i> Delete</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="col-12">
@@ -314,10 +278,10 @@
                             <div class="table-responsive">
                                 <table class="table mb-0 table-bordered table-hover">
                                     <thead>
-                                        <tr>
-                                            <th><strong>No</strong></th>
-                                            <th><strong>Nama</strong></th>
-                                            <th><strong>Total</strong></th>
+                                        <tr class="table-active">
+                                            <th class="col-md-1 text-center"><strong>No</strong></th>
+                                            <th class="col-md-1 text-center"><strong>Nama</strong></th>
+                                            <th class="col-md-1 text-center"><strong>Total</strong></th>
 
                                         </tr>
                                     </thead>
@@ -326,8 +290,8 @@
                                         $no = 1;
                                         foreach($penerima as $prm) { ?>
                                             <tr>
-                                                <th><?= $no++; ?></th>
-                                                <td><?= $prm['nama'] ?></td>
+                                                <th class="col-md-1 text-center"><?= $no++; ?></th>
+                                                <td ><?= $prm['nama'] ?></td>
 
                                                 <?php 
                                                 $total = 0;
@@ -359,7 +323,7 @@
                                                 } ?>
 
 
-                                                <td><?php echo number_format($total, 2) ?></td>
+                                                <td class="col-md-1 text-center"><?php echo number_format($total, 2) ?></td>
                                             </tr>
 
                                         <?php } ?>

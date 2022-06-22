@@ -7,7 +7,6 @@
             <div class="row clearfix">
                 <div class="col-xl-6 col-md-5 col-sm-12">
                     <h1>Data Petugas</h1>
-
                 </div>
                 <div class="col-xl-6 col-md-7 col-sm-12 text-md-right">
                     <div class="d-flex align-items-center justify-content-between flex-wrap vivify pullUp delay-550">
@@ -196,8 +195,8 @@
                         <!-- Akhir Modal Edit -->
 
                         <button type="button" class="btn btn-default btn-sm"
-                        title="Reset Password" ><i
-                        class="fa fa-passwd-reset"></i></button>
+                        title="Ubah Password" ><i
+                        class="fa fa-lock"></i></button>
 
                         <button type="button" class="btn btn-default btn-sm"
                         title="Delete" data-toggle="modal"

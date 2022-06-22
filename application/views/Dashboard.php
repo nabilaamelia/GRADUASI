@@ -15,10 +15,10 @@
             </div>
 
             <div class="row clearfix header mt-3">
-                <div class="col-lg-10 col-md-12 col-sm-12">
+                <div class="col-lg-10 col-md-12  col-sm-12">
                     <form action="<?= base_url('Dashboard') ?>" method='post' >
                         <div class="form-group row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
                                 <select class="form-control show-tick select2" name="id_periode">
                                     <?php foreach ($periode as $prd ) { ?>
                                         <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
@@ -30,7 +30,7 @@
                                     <?php }?>                                    
                                 </select>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
                                 <button class="btn btn-primary" type="submit">GET</button>
                             </div>
                         </div>

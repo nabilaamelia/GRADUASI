@@ -63,8 +63,8 @@
 
         <div id="wrapper">
 
-         <!-- Page top navbar -->
-         <nav class="navbar navbar-fixed-top">
+           <!-- Page top navbar -->
+           <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-left">
                     <div class="navbar-btn">
@@ -102,12 +102,12 @@
                         <span>Welcome</span>
                         <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $this->session->userdata('nama'); ?></strong></a>
                         <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                           <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
-                           <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
-                       </ul>
-                   </div>
-               </div>  
-               <nav id="left-sidebar-nav" class="sidebar-nav">
+                         <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
+                         <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
+                     </ul>
+                 </div>
+             </div>  
+             <nav id="left-sidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu animation-li-delay">
                     <li class="header">SUPERADMIN</li>
                     <li <?=$this->uri->segment(2) == 'Dashboard'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/Dashboard') ?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
@@ -119,7 +119,7 @@
                             <li <?=$this->uri->segment(2) == 'DtPenerimaSuper'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/DtPenerimaSuper') ?>">Data Penerima Bantuan</a></li>
                             <li <?=$this->uri->segment(2) == 'KriBoSuper'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/KriBoSuper') ?>">Kriteria dan Bobot</a></li>
                             
-                            <li <?=$this->uri->segment(2) == 'Petugas'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/Petugas') ?>">Data Petugas</a></li>
+                            <li <?=$this->uri->segment(2) == 'Petugas'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/Petugas') ?>">Data User</a></li>
                             
                         </ul>
                     </li>
@@ -127,7 +127,7 @@
                         <a href="#Patients" class="has-arrow"><i class="fa fa-table"></i><span>PROSES SELEKSI</span></a>
                         <ul>
 
-                            <!-- <li <?=$this->uri->segment(2) == 'DtCalonGraduasi'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/DtCalonGraduasi') ?>">Calon Graduasi PKH</a></li> -->
+                            <li <?=$this->uri->segment(2) == 'FormKuis'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/FormKuis') ?>">Calon Graduasi PKH</a></li>
                             <li <?=$this->uri->segment(2) == 'DtCalonSuper'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/DtCalonSuper') ?>">Data Hasil Kuisioner</a></li>
                             
                         </ul>

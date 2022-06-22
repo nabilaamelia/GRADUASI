@@ -20,6 +20,8 @@
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/vendor/c3/c3.min.css"/>
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/vendor/toastr/toastr.min.css">
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/vendor/assets/vendor/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
+		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/vendor/animate-css/vivify.min.css">
+		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/css/mooli.min.css">
 
 		<!-- MAIN CSS -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/assets/css/mooli.min.css">

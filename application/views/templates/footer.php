@@ -13,6 +13,12 @@
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/index.js"></script>
 
+<!-- Javascript -->
+<script src="<?php echo base_url() ?>assets/dist/assets/bundles/libscripts.bundle.js"></script>    
+<script src="<?php echo base_url() ?>assets/dist/assets/bundles/vendorscripts.bundle.js"></script>
+
+<!-- Project core js file minify with grunt --> 
+<script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 
 
 <!-- Vedor js datatable  --> 
