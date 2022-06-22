@@ -13,9 +13,7 @@
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/index.js"></script>
 
-<!-- Javascript -->
-<script src="<?php echo base_url() ?>assets/dist/assets/bundles/libscripts.bundle.js"></script>    
-<script src="<?php echo base_url() ?>assets/dist/assets/bundles/vendorscripts.bundle.js"></script>
+
 
 <!-- Project core js file minify with grunt --> 
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
@@ -41,6 +39,17 @@
 
 		})
 	}
+
+	var gagal = $('#gagal').data('gagal');
+	if(gagal) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: gagal + ' Data',
+			
+		})
+	}
+
 
 	$(document).on('click', '#btn-logout', function(e){
 		e.preventDefault();
@@ -82,7 +91,10 @@
 			}
 		})
 	})
+
 </script>
+
+<?php echo $this->session->flashdata('gagal')?>
 
 
 

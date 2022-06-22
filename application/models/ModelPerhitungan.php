@@ -25,13 +25,14 @@ class ModelPerhitungan extends CI_Model {
 
 	}
 
-	public function peringkat($where){
+	public function peringkat($where, $final){
 		$this->db->select('*');
 		$this->db->from('detail_periode');
 		$this->db->join('periode', 'periode.id_periode=detail_periode.id_periode');
 		$this->db->join('penerima_bantuan', 'penerima_bantuan.id_penerima_bantuan=detail_periode.id_penerima_bantuan');
 		$this->db->order_by('total', 'DESC');
 		$this->db->where($where);
+		$this->db->limit($final);
 		return $this->db->get();
 	}
 	

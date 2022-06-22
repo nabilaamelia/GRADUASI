@@ -12,7 +12,6 @@
         <div class="row clearfix">
           <div class="col-lg-4 col-md-12 col-sm-12">
             <h1>Kuisioner Calon Anggota Graduasi</h1>
-
             
           </div>
           
@@ -39,7 +38,9 @@
 
                           }
                           if($cek == '0'){ ?>
-                            <option value="<?php echo $prm['id_penerima_bantuan']; ?>"><?php echo $prm['nik']; ?>-<?php echo $prm['nama']; ?> </option>
+                            <?php if( $prm['status_bantuan'] == 'aktif') { ?>
+                              <option value="<?php echo $prm['id_penerima_bantuan']; ?>"><?php echo $prm['nik']; ?>-<?php echo $prm['nama']; ?> </option>
+                            <?php } ?>
 
                           <?php } ?>
                           

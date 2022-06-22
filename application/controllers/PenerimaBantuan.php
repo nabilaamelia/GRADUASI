@@ -2,7 +2,7 @@
 
 class PenerimaBantuan extends CI_Controller{
 
-  
+
 
     public function index()
     {
@@ -22,8 +22,25 @@ class PenerimaBantuan extends CI_Controller{
         $angkatan   = $this->input->post('angkatan');
         $kategori   = $this->input->post('kategori');
         $status_bantuan = $this->input->post('status_bantuan');
-        
 
+        $where = array(
+            'nik'   => $nik
+        );
+
+        $cek = $this->ModelPenerima->cek($where, 'penerima_bantuan')->num_rows();
+        if ($cek > 0){
+            $this->session->set_flashdata(
+                'gagal',
+                '<script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text:  "Gagal Menambah Data" ,
+
+                    })
+                    </script>');
+            redirect('PenerimaBantuan');
+        }
         $data = array(
             'nik'         => $nik,
             'nama'        => $nama,

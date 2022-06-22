@@ -12,6 +12,7 @@ class Perhitungan extends CI_Controller{
         $data['kuisioner'] = $this->ModelCalon->tampil_kuis($where)->result_array();
         $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
+        $data['id_periode'] = $id ;
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         // echo print_r($data['kriteria']);
         $a = 0;
@@ -32,14 +33,28 @@ class Perhitungan extends CI_Controller{
     }
 
 
-    public function Print()
+    public function Print($id)
     {
-        
+        $where = array(
+            'detail_periode.id_periode'  => $id
+        );
+        $data['kuisioner'] = $this->ModelCalon->tampil_kuis($where)->result_array();
+        $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
+        $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
+        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        // echo print_r($data['kriteria']);
+        $a = 0;
+        $i = 0;
+        foreach($data['kriteria'] AS $ktr){
+            $where = array(
+                'id_kriteria'  => $ktr['id_kriteria'],
+                'detail_periode.id_periode'  => $id
+            );
+            $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();
+            $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where)->row();
+        }
 
         $this->load->library('pdfgenerator');
-
-        // / title dari pdf
-        $this->data['title_pdf'] = 'Detail Perhitungan';
 
         // filename dari pdf ketika didownload
         $file_pdf = 'Detail Perhitungan Rekomendasi Graduasi PKH';
@@ -47,7 +62,7 @@ class Perhitungan extends CI_Controller{
         $paper = 'A4';
         //orientasi paper potrait / landscape
         $orientation = "portrait";
-        $html = $this->load->view('Hasil/view_print', $this->data, true);
+        $html = $this->load->view('Hasil/view_print', $data, true);
 
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);

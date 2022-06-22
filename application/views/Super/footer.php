@@ -14,14 +14,14 @@
 <script src="<?php echo base_url() ?>assets/js/index.js"></script>
 
 
+<!-- Project core js file minify with grunt --> 
+<script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 
 <!-- Vedor js datatable  --> 
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/datatablescripts.bundle.js"></script>
 
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/pages/tables/jquery-datatable.js"></script>
-
-
 
 <!-- sweetalert -->
 <script src="<?php echo base_url() ?>assets/js/sweetallert/sweetalert2.min.js"></script>

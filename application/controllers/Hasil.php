@@ -63,7 +63,12 @@ class Hasil extends CI_Controller{
             );
             $this->ModelPenerima->edit_data($data1, $where1, 'detail_periode');
         }
-        $data['penerima'] = $this->ModelPerhitungan->peringkat($where)->result_array();
+
+        $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
+        $jumlah = $cek/10 ;
+        $final = number_format($jumlah, 0);
+        
+        $data['penerima'] = $this->ModelPerhitungan->peringkat($where, $final)->result_array();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');

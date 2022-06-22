@@ -1,5 +1,3 @@
-<link href="<?php echo base_url() ?>assets/js/select2/select2.min.css" rel="stylesheet" />
-
 <!-- Main body part  -->
 <div id="main-content">
     <div class="container-fluid">

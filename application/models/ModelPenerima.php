@@ -9,6 +9,12 @@ class ModelPenerima extends CI_Model {
 		$this->db->insert($table,$data);
 	}
 
+	public function cek($where, $table){
+		$this->db->where($where);
+		$this->db->from($table);
+		return $this->db->get();
+	}
+
 	public function edit_data($data, $where, $table)
 	{
 		$this->db->where($where);
