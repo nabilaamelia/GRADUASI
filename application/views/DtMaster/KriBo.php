@@ -20,10 +20,10 @@
                                 <div class="body">
                                     <form>
 
-                                     <div class="col-12 text-lg-right">
+                                       <div class="col-12 text-lg-right">
                                         <div>
                                             <div class="btn-group  ">
-                                                <a data-toggle="modal" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                                                <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
                                                 
                                             </div>
                                         </div>

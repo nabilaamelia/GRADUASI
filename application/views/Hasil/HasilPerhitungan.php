@@ -35,14 +35,15 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-primary" type="submit">GET</button>
+                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">GET</button>
                             </div>
                         </div>
                     </form>
                 </div>
 
                 <div class="col-lg-4 col-md-12 col-sm-12 text-lg-right">
-                    <?=$this->uri->segment(1) == 'Perhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('Perhitungan/hasil/'. $id_periode) ?>" class="btn btn-primary">Detail Perhitungan</a>
+                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Hasil/PrintHasil/')?>" style="border-radius: 8px;" class="btn btn-primary">Cetak Hasil Rekomendasi <i class="fa fa-print"></i></a>
+                    <?=$this->uri->segment(1) == 'Perhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('Perhitungan/hasil/'. $id_periode) ?>" style="border-radius: 8px;" class="btn btn-primary ml-3">Detail Perhitungan</a>
 
                 </div>
 

@@ -16,7 +16,7 @@
 
 			table th {
 				border: 1.3px solid black;
-				background-color: #696969;
+				background-color: #DCDCDC;
 			}
 		</style>
 		<meta charset="utf-8">
@@ -36,64 +36,40 @@
 		<div style="width: 100%; background-color: black; height: 3px;"></div>
 		<div style="width: 100%; background-color: black; height: 1px; margin-top: 1px;"></div>
 		<div align="center">
-			<h2 style="margin-top: 5px;">Detail Perhitungan Hasil Rekomendasi Grduasi PKH </h2>
+			<h2 style="margin-top: 5px;"> Hasil Rekomendasi Graduasi PKH </h2>
 		</div>
 
 		<div>
-			<div>
-				<h3>Matrik Keputusan / Nilai Awal</h3>
-			</div>
+			
 			<div style="margin-top: 10px;">
 				<table width="100%">
 					<thead>
 						<tr>
 							<th style="text-align: center;">No</th>
 							<th style="text-align: center;">Nama</th>
-							<?php
-							$no = 1;
-							foreach ($kriteria as $ktr){?>
-								<th style="text-align: center;"><?php echo $ktr['nama_kode'] ?></th>
-							<?php } ?>
+							<th style="text-align: center;">Total</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php 
-						$no = 1;
-						foreach($penerima as $prm) { ?>
+							$no = 1;
+							foreach($penerima as $prm) { ?>
 							<tr>
 								<td style="text-align: center;"><?= $no++; ?></td>
 								<td><?= $prm['nama'] ?></td>
-
-								<?php 
-								$cek = 0;
-
-								foreach($kriteria as $ktr) {
-
-									foreach($kuisioner as $kuis) {
-										if($prm['id_detail_periode'] == $kuis['id_detail_periode'] && $ktr['id_kriteria'] == $kuis['id_kriteria'] ) {
-											$cek++;
-											$nilai = $kuis['nilai'];
-										}
-									} if($cek > 0) { ?>
-
-										<td style="text-align: center;" ><?= $nilai ?></td>
-
-									<?php } ?>
-
-
-
-								<?php } ?>
+								<td style="text-align: center;"><?php echo $prm['total'] ?></td>
 							</tr>
-						<?php } ?>
 
-					</tbody>
-					
+							<?php } ?>
 
-				</table>
+						</tbody>
+
+
+					</table>
+				</div>
 			</div>
-		</div>
-	</body>
-	</html>
+
+		</body>
+		</html>
 
 
-	

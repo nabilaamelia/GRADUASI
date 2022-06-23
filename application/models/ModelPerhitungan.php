@@ -24,7 +24,7 @@ class ModelPerhitungan extends CI_Model {
 		return $this->db->get('kuisioner');
 
 	}
-
+ 	// Mencari hasil rekomendasi
 	public function peringkat($where, $final){
 		$this->db->select('*');
 		$this->db->from('detail_periode');

@@ -81,8 +81,8 @@
                   
 
                   <div class="col-sm-12 text-right">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="submit" class="btn btn-outline-secondary">Clear</button>
+                    <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Submit</button>
+                    
                   </div>
 
 

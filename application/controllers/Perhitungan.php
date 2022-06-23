@@ -33,7 +33,7 @@ class Perhitungan extends CI_Controller{
     }
 
 
-    public function Print($id)
+    public function PrintDetail($id)
     {
         $where = array(
             'detail_periode.id_periode'  => $id
@@ -62,7 +62,7 @@ class Perhitungan extends CI_Controller{
         $paper = 'A4';
         //orientasi paper potrait / landscape
         $orientation = "portrait";
-        $html = $this->load->view('Hasil/view_print', $data, true);
+        $html = $this->load->view('Hasil/view_printDetail', $data, true);
 
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);

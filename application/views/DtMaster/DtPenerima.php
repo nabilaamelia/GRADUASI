@@ -36,7 +36,7 @@
 
                         </div>
                         <div class="mb-3 mb-xl-0">
-                            <a data-toggle="modal" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                            <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
                         </div>
                     </div>
                 </div>

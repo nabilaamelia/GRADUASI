@@ -28,7 +28,7 @@
                                     <div class="col-12 text-lg-right">
                                         <div>
                                             <div class="btn-group  ">
-                                                <a data-toggle="modal" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                                                <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
                                                 
                                             </div>
                                         </div>
@@ -40,7 +40,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
-                                     <thead>
+                                       <thead>
                                         <tr class="table-active"> 
                                             <th><strong>No</strong></th>
                                             <th><strong>Nama Periode</strong></th>

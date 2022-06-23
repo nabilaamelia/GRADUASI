@@ -29,7 +29,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2 col-md-2 col-lg-2">
-                                <button class="btn btn-primary" type="submit">GET</button>
+                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">GET</button>
                             </div>
                         </div>
                     </form>
