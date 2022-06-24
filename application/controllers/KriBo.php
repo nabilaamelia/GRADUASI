@@ -2,10 +2,6 @@
 
 class KriBo extends CI_Controller{
 
-    
-
-    
-
     public function index()
     {
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
@@ -75,6 +71,7 @@ class KriBo extends CI_Controller{
         $this->ModelKribo->tambah_data($datarentang2, 'rentang_nilai');
         $this->ModelKribo->tambah_data($datarentang3, 'rentang_nilai');
         $this->ModelKribo->tambah_data($datarentang4, 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Menambah');
         redirect('KriBo');
     }
 
@@ -101,6 +98,7 @@ class KriBo extends CI_Controller{
             'id_kriteria' => $id 
         );
         $this->ModelKribo->edit_datakri($data, $where, 'kriteria');
+        $this->session->set_flashdata('flash', ' Mengedit');
         redirect('KriBo');
     }
 
@@ -167,6 +165,7 @@ class KriBo extends CI_Controller{
         $this->ModelKribo->edit_datarentang($datarentang2, $where2 ,'rentang_nilai');
         $this->ModelKribo->edit_datarentang($datarentang3, $where3, 'rentang_nilai');
         $this->ModelKribo->edit_datarentang($datarentang4, $where4, 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Mengedit');
         redirect('KriBo');
     }
 
@@ -177,6 +176,7 @@ class KriBo extends CI_Controller{
             'id_kriteria' => $id 
         );
         $this->ModelKribo->hapus_datakri($where, 'kriteria', 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Menghapus ');
         redirect(base_url().'KriBo');
     }
 

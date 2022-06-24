@@ -13,8 +13,6 @@
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/index.js"></script>
 
-
-
 <!-- Project core js file minify with grunt --> 
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 
@@ -24,6 +22,10 @@
 
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/pages/tables/jquery-datatable.js"></script>
+
+<!-- baru -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7c4c0161bd3ac0fcaba6fb9c-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"7190aab96a2ea132","version":"2021.12.0","r":1,"token":"f79813393a9345e8a59bb86abc14d67d","si":100}' crossorigin="anonymous"></script>
 
 
 

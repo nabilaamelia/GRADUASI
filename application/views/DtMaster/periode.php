@@ -3,9 +3,6 @@
 
     <div id="flash" data-flash="<?=$this->session->flashdata('flash');?>">
 
-
-
-
         <!-- Main body part  -->
         <div id="main-content">
             <div class="container-fluid">
@@ -40,7 +37,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
-                                       <thead>
+                                     <thead>
                                         <tr class="table-active"> 
                                             <th><strong>No</strong></th>
                                             <th><strong>Nama Periode</strong></th>
@@ -55,7 +52,7 @@
                                         <?php 
                                         $no=1;
                                         foreach($period as $prd) : ?>
-                                            
+
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $prd['nama_periode'] ?></td>
@@ -109,20 +106,7 @@
                                     <button type="button" class="btn btn-default btn-sm" id="btn-hapus" title="Delete" href="<?php echo base_url('Periode/hapus_data/'.$prd['id_periode']) ?>"><i class="fa fa-trash-o"></i></button>
                                 </td>
 
-                                <!-- Modal Popup untuk delete-->
-                                <div class="modal fade" id="hapus_data<?php echo $prd['id_periode']; ?>">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content" style="margin-top:100px;">
-                                      <div class="modal-header">
-                                        
-                                        <h4 class="modal-title" style="text-align:center;">Anda yakin akan menghapus data ini.. ?</h4>
-                                    </div>
-
-                                    <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
-                                        <a href="<?php echo base_url().'Periode/hapus_data/'.$prd['id_periode']; ?>" class="btn btn-danger btn-sm" id="delete_link">Hapus</a>
-                                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </tr>

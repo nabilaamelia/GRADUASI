@@ -124,13 +124,55 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Death & Recovery rate</h2>
+                        <ul class="header-dropdown dropdown">
+                            <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="d-flex flex-row">
+                            <div class="pb-3">
+                                <h5 class="mb-0">356</h5>
+                                <small class="text-muted font-11">Death</small>
+                            </div>
+                            <div class="pb-3 pl-4 pr-4">
+                                <h5 class="mb-0">698</h5>
+                                <small class="text-muted font-11">Recovery</small>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-sm btn-default">D</button>
+                                    <button type="button" class="btn btn-sm btn-primary theme-bg gradient">W</button>
+                                    <button type="button" class="btn btn-sm btn-default">M</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="chart-bar-stacked" style="height: 320px"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+
+
+
+
     </div>
+
+</div>
 </div>
 
 </div>
 </div>
+
+</body>
+</html>
+
 
 <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="<?php echo base_url() ?>assets/js/select2/select2.min.js" defer></script>

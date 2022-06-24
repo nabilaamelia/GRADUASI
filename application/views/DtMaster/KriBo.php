@@ -1,12 +1,13 @@
 
 <!-- Main body part  -->
-<div id="main-content">
-    <div class="container-fluid">
-        <!-- Page header section  -->
-        <div class="block-header">
-            <div class="row clearfix">
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                    <h1>Data Kriteria dan Bobot</h1>
+<div id="flash" data-flash="<?=$this->session->flashdata('flash');?>">
+    <div id="main-content">
+        <div class="container-fluid">
+            <!-- Page header section  -->
+            <div class="block-header">
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <h1>Data Kriteria dan Bobot</h1>
                             <!-- <?php echo print_r($rentang_nilai);?><br><br>
                                 <?= print_r($kriteria);?><br> -->
                             </div>
@@ -51,7 +52,7 @@
                                         <?php 
                                         $no=1;
                                         foreach($kriteria as $ktr) : ?>
-                                            
+
                                             <tr class="">
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $ktr['nama_kode'] ?></td>
@@ -67,7 +68,7 @@
                                                     
                                                     <button type="button" class="btn btn-default btn-sm" title="Edit Rentang Nilai" data-toggle="modal" data-target="#EditRentang<?php echo $ktr['id_kriteria']?>"><i class="fa fa-pencil"></i></button>
 
-                                                    <button type="button" class="btn btn-default btn-sm" title="Delete" data-toggle="modal" data-target="#hapus_data<?php echo $ktr['id_kriteria']; ?>"><i class="fa fa-trash-o"></i></button>
+                                                    <button type="button" id="btn-hapus" class="btn btn-default btn-sm" title="Delete" href="<?php echo base_url('KriBo/hapus_datakri/'.$ktr['id_kriteria']) ?>" ><i class="fa fa-trash-o"></i></button>
                                                 </td>
 
                                                 <!-- Modal Popup untuk delete-->
@@ -75,7 +76,7 @@
                                                   <div class="modal-dialog">
                                                     <div class="modal-content" style="margin-top:100px;">
                                                       <div class="modal-header">
-                                                        
+
                                                         <h4 class="modal-title" style="text-align:center;">Anda yakin akan menghapus data ini.. ?</h4>
                                                     </div>
 

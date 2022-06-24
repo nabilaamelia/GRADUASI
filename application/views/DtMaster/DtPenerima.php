@@ -86,22 +86,22 @@
                                         <td><?php echo $prm['alamat'] ?></td>
                                         <td><?php echo $prm['angkatan'] ?></td>
                                         <td><?php echo $prm['kategori'] ?></td>
-                                        <td><?php echo $prm['status_bantuan'] ?></td>
+                                        <td>
+                                            <?php if($prm['status_bantuan'] == 'aktif') { ?>
+                                                <span class="badge badge-success"><?php echo $prm['status_bantuan'] ?></span>
+                                            <?php } else { ?>
+                                                <span class="badge badge-warning"><?php echo $prm['status_bantuan'] ?></span>
+                                            <?php } ?>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-default btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prm['id_penerima_bantuan']; ?>"><i class="fa fa-pencil"></i></button>
+
                                             <button type="button" id="btn-hapus" class="btn btn-default btn-sm" title="Delete" href="<?php echo base_url().'PenerimaBantuan/hapus_data/'.$prm['id_penerima_bantuan']; ?>" ><i class="fa fa-trash-o"></i></button>
-
-
-
-
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
 
                             </tbody>
-
-
-
                         </table>
                     </div>
                 </div>
@@ -239,29 +239,6 @@ foreach($penerima as $prm) : ?>
 </div>
 </div>
 <?php endforeach; ?>
-
-<!-- Modal Popup untuk delete-->
-<?php 
-$no=1;
-foreach($penerima as $prm) : ?>
-    <div class="modal fade" id="hapus_data<?php echo $prm['id_penerima_bantuan']; ?>">
-        <div class="modal-dialog">
-            <div class="modal-content" style="margin-top:100px;">
-                <div class="modal-header">
-
-                    <h4 class="modal-title" style="text-align:center;">Anda yakin akan menghapus data ini.. ?</h4>
-                </div>
-
-                <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
-                    <a href="<?php echo base_url().'PenerimaBantuan/hapus_data/'.$prm['id_penerima_bantuan']; ?>" class="btn btn-danger btn-sm" id="delete_link">Hapus</a>
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
-<!-- Akhir Modal Hapus -->
-
 
 <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="<?php echo base_url() ?>assets/js/select2/select2.min.js" defer></script>

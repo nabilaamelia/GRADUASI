@@ -233,6 +233,7 @@ class SuperAdmin extends CI_Controller{
         );
 
         $this->ModelPetugas->tambah_petugas($data, 'petugas');
+        $this->session->set_flashdata('flash', ' Menambah');
         redirect('SuperAdmin/Petugas');
     }
 
@@ -287,6 +288,7 @@ class SuperAdmin extends CI_Controller{
             'id_petugas' => $id 
         );
         $this->ModelPetugas->edit_data($data, $where, 'petugas');
+        $this->session->set_flashdata('flash', ' Mengedit');
         redirect('SuperAdmin/Petugas');
     }
 
@@ -295,6 +297,7 @@ class SuperAdmin extends CI_Controller{
             'id_petugas' => $id 
         );
         $this->ModelPetugas->hapus_data($where, 'petugas');
+        $this->session->set_flashdata('flash', ' Menghapus ');
         redirect(base_url().'SuperAdmin/Petugas');
     }
 
