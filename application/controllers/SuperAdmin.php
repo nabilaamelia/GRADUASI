@@ -15,6 +15,7 @@ class SuperAdmin extends CI_Controller{
         }
     }
 
+
 // Dashboard
     public function Dashboard()
     {
@@ -46,6 +47,7 @@ class SuperAdmin extends CI_Controller{
     }
 // Akhir Dashboard
 
+
 // Profil
     public function Profil()
     {
@@ -68,9 +70,87 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/footer');
     }
 
+    public function tambah_Penerima()
+    {
+        $nik        = $this->input->post('nik');
+        $nama       = $this->input->post('nama');
+        $alamat     = $this->input->post('alamat');
+        $angkatan   = $this->input->post('angkatan');
+        $kategori   = $this->input->post('kategori');
+        $status_bantuan = $this->input->post('status_bantuan');
 
-    
+        $where = array(
+            'nik'   => $nik
+        );
+
+        $cek = $this->ModelPenerima->cek($where, 'penerima_bantuan')->num_rows();
+        if ($cek > 0){
+            $this->session->set_flashdata(
+                'gagal',
+                '<script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text:  "Gagal Menambah Data" ,
+
+                    })
+                    </script>');
+            redirect('SuperAdmin/DtPenerimaSuper');
+        }
+        $data = array(
+            'nik'         => $nik,
+            'nama'        => $nama,
+            'alamat'      => $alamat,
+            'angkatan'    => $angkatan,
+            'kategori'    => $kategori,
+            'status_bantuan'    => $status_bantuan
+            
+        );
+
+        $this->ModelPenerima->tambah_penerima($data, 'penerima_bantuan');
+        $this->session->set_flashdata('flash', ' Menambah');
+        redirect('SuperAdmin/DtPenerimaSuper');
+    }
+
+    public function edit_Penerima($id)
+    {
+        $nik      = $this->input->post('nik');
+        $nama     = $this->input->post('nama');
+        $alamat   = $this->input->post('alamat');
+        $angkatan = $this->input->post('angkatan');
+        $kategori = $this->input->post('kategori');
+        $status_bantuan = $this->input->post('status_bantuan');
+
+
+        $data = array(
+            'nik'         => $nik,
+            'nama'        => $nama,
+            'alamat'      => $alamat,
+            'angkatan'    => $angkatan,
+            'kategori'    => $kategori,
+            'status_bantuan'    => $status_bantuan
+            
+        );
+        
+        
+        $where = array(
+            'id_penerima_bantuan' => $id 
+        );
+        $this->ModelPenerima->edit_data($data, $where, 'penerima_bantuan');
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/DtPenerimaSuper');
+    }
+
+    public function hapus_Penerima($id) {
+        $where = array(
+            'id_penerima_bantuan' => $id 
+        );
+        $this->ModelPenerima->hapus_data($where, 'penerima_bantuan');
+        $this->session->set_flashdata('flash', 'Menghapus');
+        redirect(base_url().'SuperAdmin/DtPenerimaSuper');
+    }    
 // Akhir Penerima Bantuan
+
 
 // Kriteria dan bobot
     public function KriBoSuper()
@@ -83,6 +163,171 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/footer');
     }
 
+    public function tambah_KriBo()
+    {
+        $nama_kode        = $this->input->post('nama_kode');
+        $jenis_kriteria   = $this->input->post('jenis_kriteria');
+        $atribut          = $this->input->post('atribut');
+        $bobot            = $this->input->post('bobot');
+        $jenis_rentang1   = $this->input->post('jenis_rentang1');
+        $jenis_rentang2   = $this->input->post('jenis_rentang2');
+        $jenis_rentang3   = $this->input->post('jenis_rentang3');
+        $jenis_rentang4   = $this->input->post('jenis_rentang4');
+        $nilai1           = $this->input->post('nilai1');
+        $nilai2           = $this->input->post('nilai2');
+        $nilai3           = $this->input->post('nilai3');
+        $nilai4           = $this->input->post('nilai4');
+
+        $data = array(
+            'nama_kode'         => $nama_kode,
+            'jenis_kriteria'   =>  $jenis_kriteria,
+            'atribut'           => $atribut,
+            'bobot'             => $bobot
+            
+        );
+
+        $proses     = $this->ModelKribo->tambah_data($data, 'kriteria');
+
+        if ($proses) {
+            $id =  $this->db->insert_id();
+            echo $id;
+            $datarentang1 = array(
+                'id_kriteria'    => $id,
+                'jenis_rentang'  => $jenis_rentang1,
+                'nilai'          => $nilai1,
+            );
+
+            $datarentang2 = array(
+                'id_kriteria'    => $id,
+                'jenis_rentang'  => $jenis_rentang2,
+                'nilai'          => $nilai2,
+            );
+
+            $datarentang3 = array(
+                'id_kriteria'    => $id,
+                'jenis_rentang'  => $jenis_rentang3,
+                'nilai'          => $nilai3,
+            );
+
+            $datarentang4 = array(
+                'id_kriteria'    => $id,
+                'jenis_rentang'  => $jenis_rentang4,
+                'nilai'          => $nilai4,
+            );
+        }
+
+
+        $this->ModelKribo->tambah_data($datarentang1, 'rentang_nilai');
+        $this->ModelKribo->tambah_data($datarentang2, 'rentang_nilai');
+        $this->ModelKribo->tambah_data($datarentang3, 'rentang_nilai');
+        $this->ModelKribo->tambah_data($datarentang4, 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Menambah');
+        redirect('SuperAdmin/KriBoSuper');
+    }
+
+    public function edit_kriteria($id)
+    {
+        $nama_kode        = $this->input->post('nama_kode');
+        $jenis_kriteria   = $this->input->post('jenis_kriteria');
+        $atribut          = $this->input->post('atribut');
+        $bobot            = $this->input->post('bobot');
+
+        $data = array(
+            'nama_kode'         => $nama_kode,
+            'jenis_kriteria'   =>  $jenis_kriteria,
+            'atribut'           => $atribut,
+            'bobot'             => $bobot
+            
+        );
+        
+        $where = array(
+            'id_kriteria' => $id 
+        );
+        $this->ModelKribo->edit_datakri($data, $where, 'kriteria');
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/KriBoSuper');
+    }
+
+
+    public function edit_rentang($id)
+    {
+        $id_rentang1      = $this->input->post('id_rentang1');
+        $id_rentang2      = $this->input->post('id_rentang2');
+        $id_rentang3      = $this->input->post('id_rentang3');
+        $id_rentang4      = $this->input->post('id_rentang4');
+        $jenis_rentang1   = $this->input->post('jenis_rentang1');
+        $jenis_rentang2   = $this->input->post('jenis_rentang2');
+        $jenis_rentang3   = $this->input->post('jenis_rentang3');
+        $jenis_rentang4   = $this->input->post('jenis_rentang4');
+        $nilai1           = $this->input->post('nilai1');
+        $nilai2           = $this->input->post('nilai2');
+        $nilai3           = $this->input->post('nilai3');
+        $nilai4           = $this->input->post('nilai4');
+
+        // echo $nilai1;
+        // echo $nilai2;
+        // exit();
+
+        $datarentang1 = array(
+            'id_kriteria'    => $id,
+            'jenis_rentang'  => $jenis_rentang1,
+            'nilai'          => $nilai1,
+        );
+
+        $datarentang2 = array(
+            'id_kriteria'    => $id,
+            'jenis_rentang'  => $jenis_rentang2,
+            'nilai'          => $nilai2,
+        );
+
+        $datarentang3 = array(
+            'id_kriteria'    => $id,
+            'jenis_rentang'  => $jenis_rentang3,
+            'nilai'          => $nilai3,
+        );
+
+        $datarentang4 = array(
+            'id_kriteria'    => $id,
+            'jenis_rentang'  => $jenis_rentang4,
+            'nilai'          => $nilai4,
+        );
+        
+        $where1 = array(
+            'id_rentang' => $id_rentang1 
+        );
+
+        $where2 = array(
+            'id_rentang' => $id_rentang2 
+        );
+
+        $where3 = array(
+            'id_rentang' => $id_rentang3 
+        );
+
+        $where4 = array(
+            'id_rentang' => $id_rentang4 
+        );
+        $this->ModelKribo->edit_datarentang($datarentang1, $where1, 'rentang_nilai');
+        $this->ModelKribo->edit_datarentang($datarentang2, $where2 ,'rentang_nilai');
+        $this->ModelKribo->edit_datarentang($datarentang3, $where3, 'rentang_nilai');
+        $this->ModelKribo->edit_datarentang($datarentang4, $where4, 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/KriBoSuper');
+    }
+
+    
+
+    public function hapus_KriBo($id) {
+        $where = array(
+            'id_kriteria' => $id 
+        );
+        $this->ModelKribo->hapus_datakri($where, 'kriteria', 'rentang_nilai');
+        $this->session->set_flashdata('flash', ' Menghapus ');
+        redirect(base_url().'SuperAdmin/KriBoSuper');
+    }
+// Akhir Data Kriteria dan Bobot
+
+
 // Periode
     public function PeriodeSuper()
     {
@@ -92,6 +337,57 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/periode', $data);
         $this->load->view('Super/footer');
     }
+
+    public function tambah_Periode()
+    {
+        $nama_periode  = $this->input->post('nama_periode');
+        $tgl_dimulai   = $this->input->post('tgl_dimulai');
+        $tgl_berakhir  = $this->input->post('tgl_berakhir');
+        
+
+        $data = array(
+            'nama_periode'         => $nama_periode,
+            'tgl_dimulai'          => $tgl_dimulai,
+            'tgl_berakhir'         => $tgl_berakhir,
+            
+        );
+
+        $this->ModelPeriode->tambah_periode($data, 'periode');
+        $this->session->set_flashdata('flash', ' Menambah');
+        redirect('SuperAdmin/PeriodeSuper');
+    }
+
+    public function edit_Periode($id)
+    {
+        $nama_periode  = $this->input->post('nama_periode');
+        $tgl_dimulai   = $this->input->post('tgl_dimulai');
+        $tgl_berakhir  = $this->input->post('tgl_berakhir');
+        
+        $data = array(
+            'nama_periode'         => $nama_periode,
+            'tgl_dimulai'          => $tgl_dimulai,
+            'tgl_berakhir'         => $tgl_berakhir,
+            
+        );
+        
+        $where = array(
+            'id_periode' => $id 
+        );
+        $this->ModelPeriode->edit_data($data, $where, 'periode');
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/PeriodeSuper');
+    }
+
+    public function hapus_Periode($id) {
+        $where = array(
+            'id_periode' => $id 
+        );
+        $this->ModelPeriode->hapus_data($where, 'periode');
+        $this->session->set_flashdata('flash', ' Menghapus ');
+        redirect(base_url().'SuperAdmin/PeriodeSuper');
+    }
+// Akhir Data Periode
+
 
 // Kuisioner
     public function FormKuis()
@@ -183,7 +479,6 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/footer');
     }
 
-
     public function EditKuis_Super()
     {
 
@@ -196,16 +491,13 @@ class SuperAdmin extends CI_Controller{
             $data = array(
                 'id_kriteria'             => $id_kriteria,
                 'id_rentang'              => $id_rentang,
-
-
             );
             $where = array(
                 'id_kuisioner' => $id_kuisioner 
             );
             $this->ModelPenerima->edit_data($data, $where, 'kuisioner');
         }
-
-
+        $this->session->set_flashdata('flash', ' Mengubah');
         redirect(base_url().'SuperAdmin/DtCalonSuper');
     }
 
@@ -218,10 +510,8 @@ class SuperAdmin extends CI_Controller{
         $this->session->set_flashdata('flash', 'Menghapus');
         redirect(base_url().'SuperAdmin/DtCalonSuper');
     }
-
-
-
 //Akhir Data Hasil Kuisioner
+
 
 // Hasil Graduasi
     public function Hasil()
@@ -321,10 +611,10 @@ class SuperAdmin extends CI_Controller{
             $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where)->row();
         }
 
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('Super/header');
+        $this->load->view('Super/sidebar');
         $this->load->view('Hasil/Perhitungan', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('Super/footer');
     }
 // Akhir Detail Perhitungan
 

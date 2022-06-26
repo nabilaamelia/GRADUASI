@@ -88,8 +88,7 @@ public function EditKuis()
         );
         $this->ModelPenerima->edit_data($data, $where, 'kuisioner');
     }
-    
-
+    $this->session->set_flashdata('flash', ' Mengubah');
     redirect(DtKuisioner);
 
     
