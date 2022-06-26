@@ -42,13 +42,15 @@
 		})
 	}
 
-	var gagal = $('#gagal').data('gagal');
-	if(gagal) {
+
+
+	var flash = $('#log').data('flash');
+	if(flash) {
 		Swal.fire({
-			icon: 'error',
-			title: 'Oops...',
-			text: gagal + ' Data',
-			
+			icon: 'success',
+			title: 'Berhasil',
+			text: flash + ' Login',
+
 		})
 	}
 

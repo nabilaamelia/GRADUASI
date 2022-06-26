@@ -72,6 +72,9 @@
                             <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                         </div>
                         <div class="row clearfix header">
+                            <h3>
+                                <!-- <marquee>Sistem Pendukung Keputusan Rekomendasi Graduasi Program Keluarga Harapan</marquee> -->
+                            </h3>
 
 
                         </div>

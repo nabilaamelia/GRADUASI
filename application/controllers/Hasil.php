@@ -14,7 +14,7 @@ class Hasil extends CI_Controller{
             'detail_periode.id_periode' => $data['id_periode']
         );
         $data['periode'] = $this->ModelKribo->tampil_data('periode')->result_array();
-        $kuisioner = $this->ModelCalon->tampil_kuis($where)->result_array();
+        $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
         // echo print_r($data['kriteria']);
@@ -22,7 +22,7 @@ class Hasil extends CI_Controller{
         $i = 0;
         foreach($data['kriteria'] as $ktr){
             $where2 = array(
-                'id_kriteria'  => $ktr['id_kriteria'],
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
                 'detail_periode.id_periode' => $data['id_periode']
             );
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();
@@ -88,7 +88,7 @@ class Hasil extends CI_Controller{
             'detail_periode.id_periode' => $data['id_periode']
         );
         $data['periode'] = $this->ModelKribo->tampil_data('periode')->result_array();
-        $kuisioner = $this->ModelCalon->tampil_kuis($where)->result_array();
+        $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
         // echo print_r($data['kriteria']);
@@ -96,7 +96,7 @@ class Hasil extends CI_Controller{
         $i = 0;
         foreach($data['kriteria'] as $ktr){
             $where2 = array(
-                'id_kriteria'  => $ktr['id_kriteria'],
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
                 'detail_periode.id_periode' => $data['id_periode']
             );
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();

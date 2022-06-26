@@ -2,7 +2,7 @@
 
 class CalonGraduasi extends CI_Controller{
 
- public function __construct(){
+   public function __construct(){
     parent:: __construct();
     if($this->session->userdata('level') != 'Admin'){
         $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -50,20 +50,19 @@ public function tambah_aksi()
 
         foreach ($kriteria as $ktr ){
             $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
-            $nilai         =   $this->input->post('nilai'. $ktr['id_kriteria']);
-            $pecah = explode(" ", $nilai);
+            $id_rentang    =   $this->input->post('id_rentang'. $ktr['id_kriteria']);
             $data = array(
-                'nilai'                   => $pecah[0],
                 'id_kriteria'             => $id_kriteria,
-                'id_rentang'              => $pecah[1],
+                'id_rentang'              => $id_rentang,
                 'id_petugas'              => $this->session->userdata('id_petugas'),
                 'id_detail_periode'       => $id
 
             );
+            
             $this->ModelCalon->tambah_data($data, 'kuisioner');
         }
     }
-
+    $this->session->set_flashdata('flash', ' Menyimpan');
     redirect(CalonGraduasi);
 
     
@@ -77,12 +76,10 @@ public function EditKuis()
     foreach ($kriteria as $ktr ){
         $id_kuisioner  =   $this->input->post('id_kuisioner'. $ktr['id_kriteria']);
         $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
-        $nilai         =   $this->input->post('nilai'. $ktr['id_kriteria']);
-        $pecah = explode(" ", $nilai);
+        $id_rentang    =   $this->input->post('id_rentang'. $ktr['id_kriteria']);
         $data = array(
-            'nilai'                   => $pecah[0],
             'id_kriteria'             => $id_kriteria,
-            'id_rentang'              => $pecah[1],
+            'id_rentang'              => $id_rentang,
 
 
         );

@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12">
+            <!-- <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <div class="header">
                         <h2>Death & Recovery rate</h2>
@@ -158,7 +158,7 @@
             </div>
         </div>
 
-
+    -->
 
 
 

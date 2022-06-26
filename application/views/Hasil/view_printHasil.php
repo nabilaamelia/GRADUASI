@@ -21,20 +21,10 @@
 		</style>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Cetak Detail Perhitungan Hasil Rekomendasi Graduasi PKH</title>
+		<title>Cetak Hasil Rekomendasi Graduasi PKH</title>
 	</head>
 	<body>
-		<div align="center" style="margin-bottom: 10px;">
-			<h2>PENGEPUL MADU HUTAN</h2>
-			<h2 style="margin-top: 0px; margin-bottom: 0px;">SUPLIER MADU BUDIDAYA</h2>
-			<h2 style="margin-top: 0px; margin-bottom: 0px;">PRODUSEN MADU HERBAL</h2>
-			<div style="height: 10px;"></div>
-			<span style="margin-top: 0px;">Jl Mundu, Ds. Sugihwaras Kec. Saradan</span><br>
-			<span>Kabupaten Madiun, Jawa Timur 63155</span>
-		</div>
-		<br>
-		<div style="width: 100%; background-color: black; height: 3px;"></div>
-		<div style="width: 100%; background-color: black; height: 1px; margin-top: 1px;"></div>
+		
 		<div align="center">
 			<h2 style="margin-top: 5px;"> Hasil Rekomendasi Graduasi PKH </h2>
 		</div>
@@ -52,24 +42,24 @@
 					</thead>
 					<tbody>
 						<?php 
-							$no = 1;
-							foreach($penerima as $prm) { ?>
+						$no = 1;
+						foreach($penerima as $prm) { ?>
 							<tr>
 								<td style="text-align: center;"><?= $no++; ?></td>
 								<td><?= $prm['nama'] ?></td>
 								<td style="text-align: center;"><?php echo $prm['total'] ?></td>
 							</tr>
 
-							<?php } ?>
+						<?php } ?>
 
-						</tbody>
+					</tbody>
 
 
-					</table>
-				</div>
+				</table>
 			</div>
+		</div>
 
-		</body>
-		</html>
+	</body>
+	</html>
 
 

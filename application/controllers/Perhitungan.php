@@ -9,7 +9,7 @@ class Perhitungan extends CI_Controller{
         $where = array(
             'detail_periode.id_periode'  => $id
         );
-        $data['kuisioner'] = $this->ModelCalon->tampil_kuis($where)->result_array();
+        $data['kuisioner'] = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
         $data['id_periode'] = $id ;
@@ -19,7 +19,7 @@ class Perhitungan extends CI_Controller{
         $i = 0;
         foreach($data['kriteria'] AS $ktr){
             $where = array(
-                'id_kriteria'  => $ktr['id_kriteria'],
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
                 'detail_periode.id_periode'  => $id
             );
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();
@@ -38,7 +38,7 @@ class Perhitungan extends CI_Controller{
         $where = array(
             'detail_periode.id_periode'  => $id
         );
-        $data['kuisioner'] = $this->ModelCalon->tampil_kuis($where)->result_array();
+        $data['kuisioner'] = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
@@ -47,7 +47,7 @@ class Perhitungan extends CI_Controller{
         $i = 0;
         foreach($data['kriteria'] AS $ktr){
             $where = array(
-                'id_kriteria'  => $ktr['id_kriteria'],
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
                 'detail_periode.id_periode'  => $id
             );
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();

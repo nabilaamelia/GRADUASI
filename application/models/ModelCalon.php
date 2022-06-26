@@ -5,6 +5,7 @@ class ModelCalon extends CI_Model {
         return $this->db->get($table);
 
     }
+    
     public function tampil_kuis($where){
         $this->db->select('*');
         $this->db->from('kuisioner');
@@ -31,6 +32,7 @@ class ModelCalon extends CI_Model {
         $this->db->where($where);
         return $this->db->get();
     }
+
     public function tampil_detail1($where){
         $this->db->select('*');
         $this->db->from('detail_periode');

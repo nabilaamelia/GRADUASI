@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
-                                     <thead>
+                                       <thead>
                                         <tr class="table-active"> 
                                             <th><strong>No</strong></th>
                                             <th><strong>Nama Periode</strong></th>
@@ -89,7 +89,7 @@
                                                         </div>
                                                         
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                                         </div>
                                                         
@@ -154,7 +154,7 @@
     
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     

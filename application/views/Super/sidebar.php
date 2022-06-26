@@ -123,7 +123,7 @@
                             
                         </ul>
                     </li>
-                    <li <?=$this->uri->segment(2) == 'DtCalonGraduasi' || $this->uri->segment(2) == 'DtCalonSuper' ? 'class="active"' : '' ?>>
+                    <li <?=$this->uri->segment(2) == 'FormKuis' || $this->uri->segment(2) == 'DtCalonSuper' ? 'class="active"' : '' ?>>
                         <a href="#Patients" class="has-arrow"><i class="fa fa-table"></i><span>PROSES SELEKSI</span></a>
                         <ul>
 
@@ -133,7 +133,7 @@
                         </ul>
                         
                     </li>
-                    <li <?=$this->uri->segment(2) == 'Perhitungan' || $this->uri->segment(2) == 'Hasil'  ? 'class="active"' : '' ?>>
+                    <li <?=$this->uri->segment(2) == 'DetailPerhitungan' || $this->uri->segment(2) == 'Hasil'  ? 'class="active"' : '' ?>>
                         <a href="<?php echo base_url('SuperAdmin/Hasil') ?>"><i class="fa fa-th-list"></i> <span>LAPORAN HASIL SELEKSI</span></a>
                     </li>
                     

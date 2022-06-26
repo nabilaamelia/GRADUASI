@@ -24,7 +24,7 @@
                 <div class="body">
 
 
-                  <form action="<?php echo base_url(). 'CalonGraduasi/tambah_aksi'?>" method='post' >
+                  <form action="<?php echo base_url(). 'SuperAdmin/tambah_kuis'?>" method='post' >
                     <div class="form-group row">
                       <label  class="col-sm-4 ">Nik / Nama <span class="text-danger">*</span></label>
                       <div class="col-sm-8">

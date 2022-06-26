@@ -52,8 +52,9 @@
                                             $cek = 0;
 
                                             foreach($kriteria as $ktr) {
-
+                                                $nilai = "";
                                                 foreach($kuisioner as $kuis) {
+                                                    
                                                     if($prm['id_detail_periode'] == $kuis['id_detail_periode'] && $ktr['id_kriteria'] == $kuis['id_kriteria'] ) {
                                                         $cek++;
                                                         $nilai = $kuis['nilai'];
