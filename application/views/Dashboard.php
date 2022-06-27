@@ -125,42 +125,31 @@
                 </div>
             </div>
 
-            <!-- <div class="col-lg-12 col-md-12">
+
+            <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Death & Recovery rate</h2>
+                        <h2>Hasil Rekomendasi</h2>
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-
                         </ul>
                     </div>
-                    <div class="body">
-                        <div class="d-flex flex-row">
-                            <div class="pb-3">
-                                <h5 class="mb-0">356</h5>
-                                <small class="text-muted font-11">Death</small>
-                            </div>
-                            <div class="pb-3 pl-4 pr-4">
-                                <h5 class="mb-0">698</h5>
-                                <small class="text-muted font-11">Recovery</small>
-                            </div>
-                            <div class="ml-auto">
-                                <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-sm btn-default">D</button>
-                                    <button type="button" class="btn btn-sm btn-primary theme-bg gradient">W</button>
-                                    <button type="button" class="btn btn-sm btn-default">M</button>
-                                </div>
-                            </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div>
-                        <div id="chart-bar-stacked" style="height: 320px"></div>
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="myAreaChart"></canvas>
+                            </div>
+                            
+                        </div>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
-
-    -->
-
-
 
     </div>
 
