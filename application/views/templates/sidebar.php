@@ -1,7 +1,7 @@
 
 <body>
 
-    <div id="body" class="theme-green">
+    <div id="body" class="theme-cyan">
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
             <div class="loader">
@@ -72,9 +72,9 @@
                             <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                         </div>
                         <div class="row clearfix header">
-                            <h3>
-                                <!-- <marquee>Sistem Pendukung Keputusan Rekomendasi Graduasi Program Keluarga Harapan</marquee> -->
-                            </h3>
+                            <h4>
+                                SPK Rekomendasi Graduasi Program Keluarga Harapan
+                            </h4>
 
 
                         </div>
@@ -96,7 +96,7 @@
             <div id="left-sidebar" class="sidebar light_active">
                 <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
                 <div class="navbar-brand">
-                    <a href=""><img src="<?php echo base_url() ?>assets/dist/assets/icon/logo.png" alt="Mooli Logo" class="img-fluid logo"><span>GRADUASI PKH</span></a>
+                    <center><span>GRADUASI &ensp;</span><img src="<?php echo base_url() ?>assets/dist/assets/icon/PKH3.png" alt="Mooli Logo" class="img-fluid" width="120" ></center>
                     <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
                 </div>
                 <div class="sidebar-scroll">

@@ -18,6 +18,19 @@ class Dashboard extends CI_Controller{
     public function index()
     {
         $id = $this->input->post('id_periode');
+        $data['periodeGrafik'] = $this->ModelPeriode->tampilGrafik('periode')->result_array();
+        $i = 0;
+        foreach($data['periodeGrafik'] as $dt){
+            $where = array(
+                'detail_periode.id_periode' => $dt['id_periode']
+            );
+            $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
+            $jumlah = $cek/10 ;
+            $final = number_format($jumlah, 0);
+
+            $data['periodeGrafik'][$i++]['jumlah'] = $this->ModelPerhitungan->peringkat($where, $final)->num_rows(); 
+        }
+
         $data['periode'] = $this->ModelPeriode->tampilperiode('periode')->result_array();
 
         if($id == ''){

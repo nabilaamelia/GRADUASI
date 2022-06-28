@@ -40,7 +40,7 @@
                                                 <div class="col-12 text-lg-right">
                                                     <div>
                                                         <div class="btn-group  ">
-                                                            <a data-toggle="modal" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                                                            <a data-toggle="modal" data-target="#Tambah" style="border-radius: 8px;" class="btn btn-primary">Tambah Data</a>
 
                                                         </div>
                                                     </div>
@@ -182,10 +182,10 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    <button type="button"
+                                                    <button type="button" style="border-radius: 8px;"
                                                     class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
-                                                    <button type="submit"
+                                                    <button type="submit" style="border-radius: 8px;"
                                                     class="btn btn-primary">Simpan</button>
 
 
@@ -317,8 +317,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="reset" class="btn btn-secondary">Clear</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="reset" style="border-radius: 8px;" class="btn btn-secondary">Clear</button>
+                <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
             </div>
 
         </form>

@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-12 col-sm-12 text-lg-right">
-                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Hasil/PrintHasil/')?>" style="border-radius: 8px;" class="btn btn-primary">Cetak Hasil Rekomendasi <i class="fa fa-print"></i></a>
+                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Hasil/PrintHasil/'. $id_periode)?>" style="border-radius: 8px;" class="btn btn-primary">Cetak Hasil Rekomendasi <i class="fa fa-print"></i></a>
                     <?=$this->uri->segment(2) == 'DetailPerhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('SuperAdmin/DetailPerhitungan/'. $id_periode) ?>" style="border-radius: 8px;" class="btn btn-primary ml-3">Detail Perhitungan</a>
 
                 </div>

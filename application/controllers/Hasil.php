@@ -30,8 +30,8 @@ class Hasil extends CI_Controller{
         }
         foreach($penerima as $prm){
             $total = 0;
-            $b = 0;
-            $c = 0;
+            // $b = 0;
+            // $c = 0;
             foreach($data['kriteria'] as $ktr) {
                 $max = $ktr['max']->nilai;
                 
@@ -77,46 +77,46 @@ class Hasil extends CI_Controller{
     }
 
 
-    public function PrintHasil()
+    public function PrintHasil($id)
     {
-        $data['id_periode'] = $this->input->post('id_periode');
-        if($data['id_periode'] == ''){
-            $data['id_periode'] = $this->session->userdata('id_periode');
-
-        }
+        // Memanggil id untuk tampilan laporannya
         $where = array(
-            'detail_periode.id_periode' => $data['id_periode']
+            'detail_periode.id_periode' => $id
         );
-        $data['periode'] = $this->ModelKribo->tampil_data('periode')->result_array();
+        // Memanggil id untuk judul halaman print
+        $where3 = array(
+            'id_periode'  => $id
+        );
+        $data['periode'] = $this->ModelPeriode->tampil_data1($where3);
+        // memanggil nilai awal
         $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
-        // echo print_r($data['kriteria']);
+        // variabel untuk memanggil nilai max min
         $a = 0;
         $i = 0;
         foreach($data['kriteria'] as $ktr){
             $where2 = array(
                 'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
-                'detail_periode.id_periode' => $data['id_periode']
+                'detail_periode.id_periode' => $id
             );
+            //Menentuka nilai max min
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();
             $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where2)->row();
         }
         foreach($penerima as $prm){
             $total = 0;
-            $b = 0;
-            $c = 0;
+            // $b = 0;
+            // $c = 0;
             foreach($data['kriteria'] as $ktr) {
-                $max = $ktr['max']->nilai;
-                
+                $max = $ktr['max']->nilai; 
                 $min = $ktr['min']->nilai;
                 foreach($kuisioner as $ksr){
                     if($prm['id_detail_periode'] == $ksr['id_detail_periode'] && $ktr['id_kriteria'] == $ksr['id_kriteria']){
                         $nilai = $ksr['nilai'];
-
+                        // Mengitung total nilai preferensi
                         if($ktr['atribut'] == 'Benefit'){
                             $normalisasi = $nilai/$max;
-                            
                             $preferensi  = $normalisasi * $ktr['bobot'];
                             $total+= $preferensi;
                         } else {
@@ -135,10 +135,12 @@ class Hasil extends CI_Controller{
             $where1 = array(
                 'id_detail_periode' => $prm['id_detail_periode']
             );
+            // memasukkan / update nilai total ke db
             $this->ModelPenerima->edit_data($data1, $where1, 'detail_periode');
         }
 
         $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
+        // menentukan hasil rekomendasi
         $jumlah = $cek/10 ;
         $final = number_format($jumlah, 0);
         

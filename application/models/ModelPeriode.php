@@ -5,6 +5,11 @@ class ModelPeriode extends CI_Model {
 		return $this->db->get('periode')->result_array();
 	}
 
+	public function tampil_data1($where){
+		$this->db->where($where);
+		return $this->db->get('periode')->result_array();
+	}
+
 	public function tambah_periode($data,$table){
 		$this->db->insert($table,$data);
 	}
@@ -25,6 +30,14 @@ class ModelPeriode extends CI_Model {
 		$this->db->select('*');
 		$this->db->from($table);
 		$this->db->order_by('id_periode', 'DESC');
+		return $this->db->get();
+	}
+
+
+	public function tampilGrafik($table){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->order_by('id_periode', 'ASC');
 		return $this->db->get();
 	}
 

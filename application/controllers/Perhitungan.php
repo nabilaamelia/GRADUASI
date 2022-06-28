@@ -42,6 +42,11 @@ class Perhitungan extends CI_Controller{
         $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        // Memanggil id untuk judul halaman print
+        $where3 = array(
+            'id_periode'  => $id
+        );
+        $data['periode'] = $this->ModelPeriode->tampil_data1($where3);
         // echo print_r($data['kriteria']);
         $a = 0;
         $i = 0;

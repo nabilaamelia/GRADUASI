@@ -25,11 +25,7 @@
 <script src="<?php echo base_url() ?>assets/dist/assets/bundles/mainscripts.bundle.js"></script>
 <script src="<?php echo base_url() ?>assets/js/pages/tables/jquery-datatable.js"></script>
 
-<!-- Page level plugins -->
-<script src="<?php echo base_url() ?>assets/js/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="<?php echo base_url() ?>assets/js/chart.js/chart-area-demo.js"></script>
 
 
 

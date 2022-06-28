@@ -26,7 +26,9 @@
 	<body>
 		<div align="center">
 			<h2 style="margin-top: 5px;">Detail Perhitungan Hasil Rekomendasi Graduasi PKH </h2>
-			
+			<?php foreach ($periode as $prd ) {?>
+				<h2 style="margin-top: 5px;"><?php echo $prd['nama_periode']?> </h2>
+			<?php }?>
 		</div>
 
 		<div>

@@ -5,9 +5,9 @@
         <div class="block-header">
             <div class="row clearfix mt-3">
 
-                <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="col-lg-10 col-md-12 col-sm-12">
                     <h1>Dashboard</h1>
-                    <span>JustDo Dashboard,</span>
+                    
                 </div>
 
             </div>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                                <canvas id="Grafik"></canvas>
                             </div>
                             
                         </div>
@@ -161,7 +161,14 @@
 
 </body>
 </html>
-
+<?php 
+$nama = '';
+$jumlah = '';
+foreach ($periodeGrafik as $pg) {
+    $nama .= ' "'. $pg['nama_periode']. '",';
+    $jumlah .=  $pg['jumlah']. ',';
+}?>
+<!-- <?php echo $jumlah ?> -->
 
 <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="<?php echo base_url() ?>assets/js/select2/select2.min.js" defer></script>
@@ -169,6 +176,101 @@
   $(document).ready(function() {
     $('.select2').select2();
 });</script>
+<!-- Page level plugins -->
+<script src="<?php echo base_url() ?>assets/js/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?php echo base_url() ?>assets/js/chart.js/chart-area-demo.js"></script>
+<script type="text/javascript">
+    var ctx = document.getElementById("Grafik");
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [<?php echo $nama ?>],
+        datasets: [{
+          label: "Jumlah Yang Direkomendasikan",
+          lineTension: 0.3,
+          backgroundColor: "rgba(78, 115, 223, 0.05)",
+          borderColor: "rgba(78, 115, 223, 1)",
+          pointRadius: 3,
+          pointBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointBorderColor: "rgba(78, 115, 223, 1)",
+          pointHoverRadius: 3,
+          pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+          pointHitRadius: 10,
+          pointBorderWidth: 2,
+          data: [<?php echo $jumlah ?>],
+      }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+    }
+},
+scales: {
+  xAxes: [{
+    time: {
+      unit: 'date'
+  },
+  gridLines: {
+      display: false,
+      drawBorder: false
+  },
+  ticks: {
+      maxTicksLimit: 7
+  }
+}],
+yAxes: [{
+    ticks: {
+      maxTicksLimit: 5,
+      padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return '' + number_format(value);
+        }
+    },
+    gridLines: {
+      color: "rgb(234, 236, 244)",
+      zeroLineColor: "rgb(234, 236, 244)",
+      drawBorder: false,
+      borderDash: [2],
+      zeroLineBorderDash: [2]
+  }
+}],
+},
+legend: {
+  display: false
+},
+tooltips: {
+  backgroundColor: "rgb(255,255,255)",
+  bodyFontColor: "#858796",
+  titleMarginBottom: 10,
+  titleFontColor: '#6e707e',
+  titleFontSize: 14,
+  borderColor: '#dddfeb',
+  borderWidth: 1,
+  xPadding: 15,
+  yPadding: 15,
+  displayColors: false,
+  intersect: false,
+  mode: 'index',
+  caretPadding: 10,
+  callbacks: {
+    label: function(tooltipItem, chart) {
+      var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+      return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+  }
+}
+}
+}
+});
+</script>
 
 
 
