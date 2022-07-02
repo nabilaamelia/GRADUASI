@@ -39,11 +39,11 @@
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
                                        <thead>
                                         <tr class="table-active"> 
-                                            <th><strong>No</strong></th>
-                                            <th><strong>Nama Periode</strong></th>
-                                            <th><strong>Tanggal Dimulai</strong></th>
-                                            <th><strong>Tanggal Berakhir</strong></th>
-                                            <th><strong>Aksi</strong></th>
+                                            <th class="text-center"><strong>No</strong></th>
+                                            <th class="text-center"><strong>Nama Periode</strong></th>
+                                            <th class="text-center"><strong>Tanggal Dimulai</strong></th>
+                                            <th class="text-center"><strong>Tanggal Berakhir</strong></th>
+                                            <th class="text-center"><strong>Aksi</strong></th>
                                         </tr>
                                     </thead>
 
@@ -59,8 +59,8 @@
                                                 <td><?php echo $prd['tgl_dimulai'] ?></td>
                                                 <td><?php echo $prd['tgl_berakhir'] ?></td>
                                                 
-                                                <td>
-                                                    <button type="button" class="btn btn-default btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prd['id_periode']; ?>"><i class="fa fa-pencil"></i></button>
+                                                <td class="text-center"> 
+                                                    <button type="button"  class="btn btn-primary btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prd['id_periode']; ?>"><i class="fa fa-pencil"></i></button>
 
                                                     <!-- Modal Edit-->
                                                     <div class="modal fade" id="Edit<?php echo $prd['id_periode']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,7 @@
                                                         </div>
                                                         
                                                         <div class="modal-footer">
-                                                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+                                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                                         </div>
                                                         
@@ -103,7 +103,7 @@
                                     <!-- Akhir Modal Edit -->
 
 
-                                    <button type="button" class="btn btn-default btn-sm" id="btn-hapus" title="Delete" href="<?php echo base_url('Periode/hapus_data/'.$prd['id_periode']) ?>"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" style="margin:0px; border-top:0px; text-align:center;" class="btn btn-danger btn-sm" id="btn-hapus" title="Delete" href="<?php echo base_url('Periode/hapus_data/'.$prd['id_periode']) ?>"><i class="fa fa-trash-o"></i></button>
                                 </td>
 
                                 
@@ -154,7 +154,7 @@
     
 
     <div class="modal-footer">
-        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+        <button type="reset" class="btn btn-dark" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     

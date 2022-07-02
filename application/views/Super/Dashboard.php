@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Page header section  -->
         <div class="block-header">
-            <div class="row clearfix">
+            <div class="row clearfix mt-3">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <h1>Dashboard</h1>
                 </div>
@@ -12,167 +12,159 @@
             </div>
 
 
-            <div class="row clearfix header mt-3">
-                <div class="col-lg-10 col-md-12  col-sm-12">
-                    <form action="<?= base_url('SuperAdmin/Dashboard') ?>" method='post' >
-                        <div class="form-group row">
-                            <div class="col-sm-6 col-md-6 col-lg-4">
-                                <select class="form-control show-tick select2" name="id_periode">
-                                    <?php foreach ($periode as $prd ) { ?>
-                                        <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
-                                            <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
-                                        <?php } else{ ?>
-                                            <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
-                                        <?php } ?>
+            <div class="row clearfix header mt-5">
 
-                                    <?php }?>                                    
-                                </select>
-                            </div>
-                            <div class="col-sm-2 col-md-2 col-lg-2">
-                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">GET</button>
-                            </div>
-                        </div>
-                    </form>
+            </div>
+
+
+
+            <div class="row clearfix">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg page_menu">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars text-muted"></i>
+                        </button>
+
+                    </nav>
                 </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="row clearfix">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-lg page_menu">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars text-muted"></i>
-                    </button>
+                <div class="col-12">
+                    <div class="card theme-bg gradient">
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div>Total Penerima Bantuan</div>
+                                            <?php
+                                            $jumlahprm = 0;
+                                            foreach($penerima as $prm) {
+                                                $jumlahprm ++;
+                                            }
 
-                </nav>
-            </div>
-            <div class="col-12">
-                <div class="card theme-bg gradient">
-                    <div class="body">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="body">
-                                        <div>Total Penerima Bantuan</div>
-                                        <?php
-                                        $jumlahprm = 0;
-                                        foreach($penerima as $prm) {
-                                            $jumlahprm ++;
-                                        }
+                                            ?>
+                                            <div class="mt-3 h1"><?php echo $jumlahprm; ?></div>
 
-                                        ?>
-                                        <div class="mt-3 h1"><?php echo $jumlahprm; ?></div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-lg-2 col-md-6">
-                                <div class="card">
-                                    <div class="body">
-                                        <div>Total Kriteria</div>
-                                        <?php
-                                        $jumlahktr = 0;
-                                        foreach($kriteria as $ktr) {
-                                            $jumlahktr ++;
-                                        }
-
-                                        ?>
-                                        <div class="mt-3 h1"><?php echo $jumlahktr; ?></div>
+                                        </div>
 
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-lg-2 col-md-6">
-                                <div class="card">
-                                    <div class="body">
-                                        <div>Total Periode</div>
-                                        <?php
-                                        $jumlahprd = 0;
-                                        foreach($period as $prd) {
-                                            $jumlahprd ++;
-                                        }
+                                <div class="col-lg-2 col-md-6">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div>Total Kriteria</div>
+                                            <?php
+                                            $jumlahktr = 0;
+                                            foreach($kriteria as $ktr) {
+                                                $jumlahktr ++;
+                                            }
 
-                                        ?>
-                                        <div class="mt-3 h1"><?php echo $jumlahprd; ?></div>
+                                            ?>
+                                            <div class="mt-3 h1"><?php echo $jumlahktr; ?></div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="body">
-                                        <div>Total Calon Anggota Graduasi</div>
-                                        <?php
-                                        $jumlahcl = 0;
-                                        foreach($calon as $cl) {
-                                            $jumlahcl ++;
-                                        }
+                                <div class="col-lg-2 col-md-6">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div>Total Periode</div>
+                                            <?php
+                                            $jumlahprd = 0;
+                                            foreach($period as $prd) {
+                                                $jumlahprd ++;
+                                            }
 
-                                        ?>
-                                        <div class="mt-3 h1"><?php echo $jumlahcl; ?></div>
+                                            ?>
+                                            <div class="mt-3 h1"><?php echo $jumlahprd; ?></div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-2 col-md-6">
-                                <div class="card">
-                                    <div class="body">
-                                        <div>Total Petugas</div>
-                                        <?php
-                                        $jumlahptg = 0;
-                                        foreach($petugas as $ptg) {
-                                            $jumlahptg ++;
-                                        }
 
-                                        ?>
-                                        <div class="mt-3 h1"><?php echo $jumlahptg; ?></div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div>Total Calon Anggota Graduasi</div>
+                                            <?php
+                                            $jumlahcl = 0;
+                                            foreach($calon as $cl) {
+                                                $jumlahcl ++;
+                                            }
 
+                                            ?>
+                                            <div class="mt-3 h1"><?php echo $jumlahcl; ?></div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="col-lg-2 col-md-6">
+                                    <div class="card">
+                                        <div class="body">
+                                            <div>Total Petugas</div>
+                                            <?php
+                                            $jumlahptg = 0;
+                                            foreach($petugas as $ptg) {
+                                                $jumlahptg ++;
+                                            }
+
+                                            ?>
+                                            <div class="mt-3 h1"><?php echo $jumlahptg; ?></div>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                        </div>         
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Hasil Rekomendasi</h2>
-                        <ul class="header-dropdown dropdown">
-                            <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-area">
-                                <canvas id="Grafik"></canvas>
-                            </div>
-                            
+                            </div>         
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Hasil Rekomendasi</h2>
+                            <ul class="header-dropdown dropdown">
+                                <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12 mt-3 ml-3">
+                            <form action="<?= base_url('SuperAdmin/FilterHasil') ?>" method='post' >
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+
+                                        <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil"  > 
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-success" style="border-radius: 8px;" type="submit">Tampilkan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="Grafik"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-
     </div>
-</div>
 
 </div>
 </div>

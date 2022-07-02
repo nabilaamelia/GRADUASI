@@ -15,11 +15,21 @@ class SuperAdmin extends CI_Controller{
         }
     }
 
+    public function FilterPeriode()
+    {
+        $id = $this->input->post('id_periode');
+        $this->session->set_userdata('id_periode', $id);
+        echo "<script>
+        window.location=history.go(-1);
+        </script>";
+    }
+
 
 // Dashboard
     public function Dashboard()
     {
         $id = $this->input->post('id_periode');
+        $hasil = $this->session->userdata('hasil');
         $data['periodeGrafik'] = $this->ModelPeriode->tampilGrafik('periode')->result_array();
         $i = 0;
         foreach($data['periodeGrafik'] as $dt){
@@ -27,7 +37,7 @@ class SuperAdmin extends CI_Controller{
                 'detail_periode.id_periode' => $dt['id_periode']
             );
             $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
-            $jumlah = $cek/10 ;
+            $jumlah = $cek*($hasil/100) ;
             $final = number_format($jumlah, 0);
 
             $data['periodeGrafik'][$i++]['jumlah'] = $this->ModelPerhitungan->peringkat($where, $final)->num_rows(); 
@@ -53,7 +63,7 @@ class SuperAdmin extends CI_Controller{
         $data['petugas'] = $this->ModelPetugas->tampil_data();
         $data['calon'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
         $this->load->view('Super/header');
-        $this->load->view('Super/sidebar');
+        $this->load->view('Super/sidebar', $data);
         $this->load->view('Super/Dashboard', $data);
         $this->load->view('Super/footer');
     }
@@ -63,10 +73,62 @@ class SuperAdmin extends CI_Controller{
 // Profil
     public function Profil()
     {
+        $data['petugas'] = $this->ModelPetugas->tampil_data();
+        $where = array(
+            'id_petugas' => $this->session->userdata('id_petugas')
+        );
+        $data['profil'] = $this->ModelPetugas->tampil_petugas($where)->row_array();
         $this->load->view('super/header');
         $this->load->view('super/sidebar');
-        $this->load->view('profile');
+        $this->load->view('super/profile', $data);
         $this->load->view('super/footer');
+    }
+
+    public function EditProfil()
+    {
+        $nama       = $this->input->post('nama');
+        $alamat     = $this->input->post('alamat');
+        $nohp       = $this->input->post('nohp');
+        $username   = $this->input->post('username');
+        $foto       = $_FILES['foto']['name'];
+
+        
+        echo $foto;
+        echo $nama;
+        if ($foto == null) {
+            $data = array(
+                'nama'        => $nama,
+                'alamat'      => $alamat,
+                'nohp'        => $nohp,
+                'username'    => $username
+
+            );
+        }
+
+        else{
+            $config ['upload_path'] = './uploads';
+            $config ['allowed_types'] = 'jpg|jpeg|png|gif';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('foto')){
+                echo "Foto gagal diupload";
+            } else {
+                $foto=$this->upload->data('file_name');
+            }
+            $data = array(
+                'nama'        => $nama,
+                'alamat'      => $alamat,
+                'nohp'        => $nohp,
+                'username'    => $username,
+                'foto'        => $foto
+            );
+        }
+        $where = array(
+            'id_petugas' => $this->session->userdata('id_petugas')  
+        );
+        $this->ModelPetugas->edit_data($data, $where, 'petugas');
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/Profil');
     }
 // Akhir Profil
 
@@ -402,19 +464,62 @@ class SuperAdmin extends CI_Controller{
 
 
 // Kuisioner
-    public function FormKuis()
+    // public function FormKuis()
+    // {
+    //     $where = array (
+    //         'id_periode'  => $this->session->userdata('id_periode')
+    //     );
+    //     $data['dataterisi'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
+    //     $data['penerima'] = $this->ModelCalon->tampil_data('penerima_bantuan')->result_array();
+    //     $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+    //     $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
+    //     $data['period'] = $this->ModelPeriode->filter('periode', $where)->result_array();
+    //     $this->load->view('Super/header');
+    //     $this->load->view('Super/sidebar');
+    //     $this->load->view('Super/FormKuisioner', $data);
+    //     $this->load->view('Super/footer');
+    // }
+
+
+//Akhir Kuisioner
+
+
+// Data Hasil Kuisioner
+    public function DtCalonSuper()
     {
-        $where = array (
+        $data['id_periode'] = $this->input->post('id_periode');
+        if($data['id_periode'] == ''){
+            $data['id_periode'] = $this->session->userdata('id_periode');
+
+        }
+        $where1 = array(
             'id_periode'  => $this->session->userdata('id_periode')
         );
-        $data['dataterisi'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
-        $data['penerima'] = $this->ModelCalon->tampil_data('penerima_bantuan')->result_array();
-        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        $where = array(
+            'detail_periode.id_periode' => $data['id_periode']
+        );
+
+        $data['dataterisi'] = $this->ModelPeriode->filter('detail_periode', $where1)->result_array();
+        $data['penerimaB'] = $this->ModelCalon->tampil_data('penerima_bantuan')->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
-        $data['period'] = $this->ModelPeriode->filter('periode', $where)->result_array();
+        $data['calon'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
+        $data['penerima'] = $this->ModelCalon->tampil_dataKuis($where)->result_array();
+        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        $data['period'] = $this->ModelPeriode->filter('periode', $where1)->result_array();
+
+        
+        $data['kuisioner'] = $this->ModelCalon->kuis($where)->result_array();
+
+        $i = 0;
+        foreach($data['kriteria'] as $krt){
+            $where2 = array(
+                'id_kriteria' => $krt['id_kriteria']
+            );
+            $data['kriteria'][$i++]['rentang'] = $this->ModelPeriode->filter('rentang_nilai', $where2)->result_array();
+        }
         $this->load->view('Super/header');
         $this->load->view('Super/sidebar');
-        $this->load->view('Super/FormKuisioner', $data);
+        $this->load->view('Super/DtKuisioner', $data);
         $this->load->view('Super/footer');
     }
 
@@ -448,48 +553,86 @@ class SuperAdmin extends CI_Controller{
             }
         }
         $this->session->set_flashdata('flash', ' Menyimpan');
-        redirect(base_url().'SuperAdmin/FormKuis');
+        redirect(base_url().'SuperAdmin/DtCalonSuper');
 
 
     }
-//Akhir Kuisioner
 
-
-// Data Hasil Kuisioner
-    public function DtCalonSuper()
+    public function ProsesHitung()
     {
-        $data['id_periode'] = $this->input->post('id_periode');
-        if($data['id_periode'] == ''){
-            $data['id_periode'] = $this->session->userdata('id_periode');
-
-        }
+        $data['id_periode'] = $this->session->userdata('id_periode');
         $where = array(
             'detail_periode.id_periode' => $data['id_periode']
         );
-        $data['calon'] = $this->ModelPeriode->filter('detail_periode', $where)->result_array();
-        $data['penerima'] = $this->ModelCalon->tampil_dataKuis($where)->result_array();
+        $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
-        $this->load->view('Super/header');
-        $this->load->view('Super/sidebar');
-        $this->load->view('Super/DtKuisioner', $data);
-        $this->load->view('Super/footer');
+        $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
+        // echo print_r($data['kriteria']);
+        $a = 0;
+        $i = 0;
+        foreach($data['kriteria'] as $ktr){
+            $where2 = array(
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
+                'detail_periode.id_periode' => $data['id_periode']
+            );
+            $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();
+            $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where2)->row();
+        }
+        foreach($penerima as $prm){
+            $total = 0;
+            // $b = 0;
+            // $c = 0;
+            foreach($data['kriteria'] as $ktr) {
+                $max = $ktr['max']->nilai;
+                
+                $min = $ktr['min']->nilai;
+                foreach($kuisioner as $ksr){
+                    if($prm['id_detail_periode'] == $ksr['id_detail_periode'] && $ktr['id_kriteria'] == $ksr['id_kriteria']){
+                        $nilai = $ksr['nilai'];
+
+                        if($ktr['atribut'] == 'Benefit'){
+                            $normalisasi = $nilai/$max;
+                            
+                            $preferensi  = $normalisasi * $ktr['bobot'];
+                            $total+= $preferensi;
+                        } else {
+                            $normalisasi = $min/$nilai;
+                            $preferensi  = $normalisasi * $ktr['bobot'];
+                            $total+= $preferensi;
+                        }
+                    }
+
+                }
+            }
+            $format = number_format($total, 2);
+            $data1 = array(
+                "total" => $format
+            );
+            $where1 = array(
+                'id_detail_periode' => $prm['id_detail_periode']
+            );
+            $this->ModelPenerima->edit_data($data1, $where1, 'detail_periode');
+        }
+        $this->session->set_flashdata('flash', 'Memproses Perhitungan');
+        redirect(base_url().'SuperAdmin/DtCalonSuper');
+
     }
 
-    public function View_Edit($id)
-    {
-        $where = array(
-            'id_detail_periode' => $id
-        );
-        $data['penerima'] = $this->ModelCalon->edit_kuis($where)->result_array();
-        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
-        $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
-        $data['period'] = $this->ModelCalon->tampil_detail1($where)->result_array();
-        $data['kuisioner'] = $this->ModelCalon->filter_edit('kuisioner', $where)->result_array();
-        $this->load->view('Super/header');
-        $this->load->view('Super/sidebar');
-        $this->load->view('Super/EditKuis', $data);
-        $this->load->view('Super/footer');
-    }
+    // public function View_Edit($id)
+    // {
+    //     $where = array(
+    //         'id_detail_periode' => $id
+    //     );
+    //     $data['penerima'] = $this->ModelCalon->edit_kuis($where)->result_array();
+    //     $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+    //     $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
+    //     $data['period'] = $this->ModelCalon->tampil_detail1($where)->result_array();
+    //     $data['kuisioner'] = $this->ModelCalon->filter_edit('kuisioner', $where)->result_array();
+    //     $this->load->view('Super/header');
+    //     $this->load->view('Super/sidebar');
+    //     $this->load->view('Super/EditKuis', $data);
+    //     $this->load->view('Super/footer');
+    // }
 
     public function EditKuis_Super()
     {
@@ -528,67 +671,14 @@ class SuperAdmin extends CI_Controller{
 // Hasil Graduasi
     public function Hasil()
     {
-        $data['id_periode'] = $this->input->post('id_periode');
-        if($data['id_periode'] == ''){
-            $data['id_periode'] = $this->session->userdata('id_periode');
-
-        }
+        $data['id_periode'] = $this->session->userdata('id_periode');
         $where = array(
             'detail_periode.id_periode' => $data['id_periode']
         );
-        $data['periode'] = $this->ModelKribo->tampil_data('periode')->result_array();
-        $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
-        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
-        $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
-        // echo print_r($data['kriteria']);
-        $a = 0;
-        $i = 0;
-        foreach($data['kriteria'] as $ktr){
-            $where2 = array(
-                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
-                'detail_periode.id_periode' => $data['id_periode']
-            );
-            $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();
-            $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where2)->row();
-        }
-        foreach($penerima as $prm){
-            $total = 0;
-            $b = 0;
-            $c = 0;
-            foreach($data['kriteria'] as $ktr) {
-                $max = $ktr['max']->nilai;
-                
-                $min = $ktr['min']->nilai;
-                foreach($kuisioner as $ksr){
-                    if($prm['id_detail_periode'] == $ksr['id_detail_periode'] && $ktr['id_kriteria'] == $ksr['id_kriteria']){
-                        $nilai = $ksr['nilai'];
-
-                        if($ktr['atribut'] == 'Benefit'){
-                            $normalisasi = $nilai/$max;
-                            
-                            $preferensi  = $normalisasi * $ktr['bobot'];
-                            $total+= $preferensi;
-                        } else {
-                            $normalisasi = $min/$nilai;
-                            $preferensi  = $normalisasi * $ktr['bobot'];
-                            $total+= $preferensi;
-                        }
-                    }
-
-                }
-            }
-            $format = number_format($total, 2);
-            $data1 = array(
-                "total" => $format
-            );
-            $where1 = array(
-                'id_detail_periode' => $prm['id_detail_periode']
-            );
-            $this->ModelPenerima->edit_data($data1, $where1, 'detail_periode');
-        }
-
+        
+        $data['hasil'] = $this->session->userdata('hasil');
         $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
-        $jumlah = $cek/10 ;
+        $jumlah = $cek*($data['hasil']/100) ;
         $final = number_format($jumlah, 0);
         
         $data['penerima'] = $this->ModelPerhitungan->peringkat($where, $final)->result_array();
@@ -597,6 +687,15 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/sidebar');
         $this->load->view('Super/HasilPerhitungan', $data);
         $this->load->view('Super/footer');
+    }
+
+    public function FilterHasil()
+    {
+        $hasil = $this->input->post('hasil');
+        $this->session->set_userdata('hasil', $hasil);
+        echo "<script>
+        window.location=history.go(-1);
+        </script>";
     }
 // Akhir Hasil Graduasi
 

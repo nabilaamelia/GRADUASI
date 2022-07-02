@@ -21,7 +21,7 @@
                                 <div class="body">
                                     <form>
 
-                                     <div class="col-12 text-lg-right">
+                                       <div class="col-12 text-lg-right">
                                         <div>
                                             <div class="btn-group  ">
                                                 <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
@@ -60,15 +60,15 @@
                                                 <td><?php echo $ktr['atribut'] ?></td>
                                                 <td><?php echo $ktr['bobot'] ?></td>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-default btn-sm" title="Detail" data-toggle="modal" data-target="#Detail<?php echo $ktr['id_kriteria']?>"><i class="fa fa-info"></i></button>
+                                                    <button type="button" class="btn btn-warning btn-sm" title="Detail" data-toggle="modal" data-target="#Detail<?php echo $ktr['id_kriteria']?>"><i class="fa fa-info"></i></button>
 
                                                     
-                                                    <button type="button" class="btn btn-default btn-sm" title="Edit Kriteria"><i class="fa fa-pencil" data-toggle="modal" data-target="#Edit<?php echo $ktr['id_kriteria']?>"></i></button>
+                                                    <button type="button" class="btn btn-primary btn-sm" title="Edit Kriteria"><i class="fa fa-pencil" data-toggle="modal" data-target="#Edit<?php echo $ktr['id_kriteria']?>"></i></button>
 
                                                     
-                                                    <button type="button" class="btn btn-default btn-sm" title="Edit Rentang Nilai" data-toggle="modal" data-target="#EditRentang<?php echo $ktr['id_kriteria']?>"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" class="btn btn-primary btn-sm" title="Edit Rentang Nilai" data-toggle="modal" data-target="#EditRentang<?php echo $ktr['id_kriteria']?>"><i class="fa fa-pencil"></i></button>
 
-                                                    <button type="button" id="btn-hapus" class="btn btn-default btn-sm" title="Delete" href="<?php echo base_url('SuperAdmin/hapus_KriBo/'.$ktr['id_kriteria']) ?>" ><i class="fa fa-trash-o"></i></button>
+                                                    <button type="button" id="btn-hapus" class="btn btn-danger btn-sm" title="Delete" href="<?php echo base_url('SuperAdmin/hapus_KriBo/'.$ktr['id_kriteria']) ?>" ><i class="fa fa-trash-o"></i></button>
                                                 </td>
 
                                                 <!-- Modal Popup untuk delete-->
@@ -181,7 +181,7 @@
     </div>
     
     <div class="modal-footer">
-        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     
@@ -336,7 +336,7 @@ foreach($kriteria as $ktr) : ?>
 </div>
 
 <div class="modal-footer">
-    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
     <button type="submit" class="btn btn-primary">Simpan</button>
 </div>
 
@@ -405,7 +405,7 @@ foreach($kriteria as $ktr) : ?>
     
     
     <div class="modal-footer">
-        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     

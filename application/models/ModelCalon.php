@@ -58,7 +58,15 @@ class ModelCalon extends CI_Model {
 
     public function filter_edit($table, $where)
     {
-        $this->db->from($table);
+        $this->db->from($table); 
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
+    public function kuis($where){
+        $this->db->select('*');
+        $this->db->from('kuisioner');
+        $this->db->join('detail_periode', 'detail_periode.id_detail_periode=kuisioner.id_detail_periode');
         $this->db->where($where);
         return $this->db->get();
     }

@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
-                                       <thead>
+                                     <thead>
                                         <tr class="table-active"> 
                                             <th><strong>No</strong></th>
                                             <th><strong>Nama Periode</strong></th>
@@ -60,7 +60,7 @@
                                                 <td><?php echo $prd['tgl_berakhir'] ?></td>
                                                 
                                                 <td>
-                                                    <button type="button" class="btn btn-default btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prd['id_periode']; ?>"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" class="btn btn-primary btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prd['id_periode']; ?>"><i class="fa fa-pencil"></i></button>
 
                                                     <!-- Modal Edit-->
                                                     <div class="modal fade" id="Edit<?php echo $prd['id_periode']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,7 @@
                                                         </div>
                                                         
                                                         <div class="modal-footer">
-                                                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+                                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                                         </div>
                                                         
@@ -103,7 +103,7 @@
                                     <!-- Akhir Modal Edit -->
 
 
-                                    <button type="button" class="btn btn-default btn-sm" id="btn-hapus" title="Delete" href="<?php echo base_url('SuperAdmin/hapus_Periode/'.$prd['id_periode']) ?>"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" id="btn-hapus" title="Delete" href="<?php echo base_url('SuperAdmin/hapus_Periode/'.$prd['id_periode']) ?>"><i class="fa fa-trash-o"></i></button>
                                 </td>
 
                                 
@@ -154,7 +154,7 @@
     
 
     <div class="modal-footer">
-        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     

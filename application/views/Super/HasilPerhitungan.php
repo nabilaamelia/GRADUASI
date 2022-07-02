@@ -17,33 +17,22 @@
             <div class="row clearfix header">
 
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    <form action="<?= base_url('Hasil') ?>" method='post' >
+                    <form action="<?= base_url('SuperAdmin/FilterHasil') ?>" method='post' >
                         <div class="form-group row">
-                            <label  class="col-sm-2 ">Periode <span class="text-danger"></span></label>
-                            <div class="col-sm-2">
-                                <select class="form-control show-tick select2" name="id_periode">
-                                    <?php foreach ($periode as $prd ) { ?>
-                                        <?php if($prd['id_periode'] == $id_periode) { ?>
-                                            <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
+                            <div class="col-sm-4">
 
-                                        <?php } else { ?>
-                                            <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
-                                        <?php } ?>
-                                        
-                                    <?php }?>
-                                    
-                                </select>
+                                <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil')?>" placeholder="Inputkan nilai filter hasil"  > 
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">GET</button>
+                                <button class="btn btn-success" style="border-radius: 8px;" type="submit">Tampilkan</button>
                             </div>
                         </div>
                     </form>
                 </div>
 
                 <div class="col-lg-4 col-md-12 col-sm-12 text-lg-right">
-                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Hasil/PrintHasil/'. $id_periode)?>" style="border-radius: 8px;" class="btn btn-primary">Cetak Hasil Rekomendasi <i class="fa fa-print"></i></a>
-                    <?=$this->uri->segment(2) == 'DetailPerhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('SuperAdmin/DetailPerhitungan/'. $id_periode) ?>" style="border-radius: 8px;" class="btn btn-primary ml-3">Detail Perhitungan</a>
+                    <a onclick="window.open(this.href); return false;" href="<?php echo base_url('Hasil/PrintHasil/'. $id_periode)?>" style="border-radius: 8px;" class="btn btn-dark">Cetak Hasil Rekomendasi <i class="fa fa-print"></i></a>
+                    <?=$this->uri->segment(2) == 'DetailPerhitungan'  ? 'class="active"' : '' ?><a  href="<?php echo base_url('SuperAdmin/DetailPerhitungan/'. $id_periode) ?>" style="border-radius: 8px;" class="btn btn-warning ml-3">Detail Perhitungan</a>
 
                 </div>
 

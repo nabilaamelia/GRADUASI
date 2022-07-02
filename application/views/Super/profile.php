@@ -86,7 +86,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(). 'Dashboard/EditProfil' ?>" method="post" enctype="multipart/form-data">  
+                        <form action="<?php echo base_url(). 'SuperAdmin/EditProfil' ?>" method="post" enctype="multipart/form-data">  
 
                             <div class="form-group">
                                 <label>Nama</label>

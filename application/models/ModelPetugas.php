@@ -5,6 +5,11 @@ class ModelPetugas extends CI_Model {
 		return $this->db->get('petugas')->result_array();
 	}
 
+	public function tampil_petugas($where){
+		$this->db->where($where);
+		return $this->db->get('petugas');
+	}
+
 	public function tambah_petugas($data,$table){
 		$this->db->insert($table,$data);
 	}

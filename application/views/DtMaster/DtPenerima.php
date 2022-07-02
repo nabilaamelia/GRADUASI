@@ -94,9 +94,9 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-default btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prm['id_penerima_bantuan']; ?>"><i class="fa fa-pencil"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prm['id_penerima_bantuan']; ?>"><i class="fa fa-pencil"></i></button>
 
-                                            <button type="button" id="btn-hapus" class="btn btn-default btn-sm" title="Delete" href="<?php echo base_url().'PenerimaBantuan/hapus_data/'.$prm['id_penerima_bantuan']; ?>" ><i class="fa fa-trash-o"></i></button>
+                                            <button type="button" id="btn-hapus" class="btn btn-danger btn-sm" title="Delete" href="<?php echo base_url().'PenerimaBantuan/hapus_data/'.$prm['id_penerima_bantuan']; ?>" ><i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -163,7 +163,7 @@
 
 
                     <div class="modal-footer">
-                        <button type="reset" class="btn btn-secondary" >Clear</button>
+                        <button type="button" class="btn btn-dark" >Close</button>
                         <button type="submit" id="flash" class="btn btn-primary">Simpan</button>
                     </div>
 
@@ -227,7 +227,7 @@ foreach($penerima as $prm) : ?>
 
 
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" >Clear</button>
+                    <button type="button" class="btn btn-dark" >Close</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
 

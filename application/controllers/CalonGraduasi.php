@@ -2,7 +2,7 @@
 
 class CalonGraduasi extends CI_Controller{
 
-   public function __construct(){
+ public function __construct(){
     parent:: __construct();
     if($this->session->userdata('level') != 'Admin'){
         $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -32,67 +32,6 @@ public function index()
     $this->load->view('templates/footer');
 }
 
-
-public function tambah_aksi()
-{
-    $id_penerima_bantuan   = $this->input->post('id_penerima_bantuan');
-    $id_periode            = $this->input->post('id_periode');
-    $kriteria              = $this->ModelKribo->tampil_data('kriteria')->result_array();
-    $data1 = array(
-        'id_penerima_bantuan'  => $id_penerima_bantuan,
-        'id_periode'           => $id_periode
-    );
-
-
-    $tambah = $this->ModelCalon->tambah_data($data1, 'detail_periode');
-    if($tambah) {
-        $id = $this->db->insert_id();
-
-        foreach ($kriteria as $ktr ){
-            $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
-            $id_rentang    =   $this->input->post('id_rentang'. $ktr['id_kriteria']);
-            $data = array(
-                'id_kriteria'             => $id_kriteria,
-                'id_rentang'              => $id_rentang,
-                'id_petugas'              => $this->session->userdata('id_petugas'),
-                'id_detail_periode'       => $id
-
-            );
-            
-            $this->ModelCalon->tambah_data($data, 'kuisioner');
-        }
-    }
-    $this->session->set_flashdata('flash', ' Menyimpan');
-    redirect(CalonGraduasi);
-
-    
-}
-
-public function EditKuis()
-{
-
-    $kriteria              = $this->ModelKribo->tampil_data('kriteria')->result_array();
-
-    foreach ($kriteria as $ktr ){
-        $id_kuisioner  =   $this->input->post('id_kuisioner'. $ktr['id_kriteria']);
-        $id_kriteria   =   $this->input->post('id_kriteria'. $ktr['id_kriteria']);
-        $id_rentang    =   $this->input->post('id_rentang'. $ktr['id_kriteria']);
-        $data = array(
-            'id_kriteria'             => $id_kriteria,
-            'id_rentang'              => $id_rentang,
-
-
-        );
-        $where = array(
-            'id_kuisioner' => $id_kuisioner 
-        );
-        $this->ModelPenerima->edit_data($data, $where, 'kuisioner');
-    }
-    $this->session->set_flashdata('flash', ' Mengubah');
-    redirect(DtKuisioner);
-
-    
-}
 
 
 

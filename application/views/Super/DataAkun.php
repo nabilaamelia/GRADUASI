@@ -12,10 +12,7 @@
                     </div>
                     <div class="col-xl-6 col-md-7 col-sm-12 text-md-right">
                         <div class="d-flex align-items-center justify-content-between flex-wrap vivify pullUp delay-550">
-                            <div class="ml-auto mb-3 mb-xl-0">
-                                <p class="text-muted mb-1">Last Update</p>
-                                <h5 class="mb-0">18 Dec 2019</h5>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -87,12 +84,12 @@
                                                                 <?php } else { ?>
                                                                     <span class="badge badge-warning"><?php echo $ptg['status']?></span>
                                                                 <?php } ?>
-                                                                
+
                                                             </td>
-                                                            
+
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-default btn-sm"
+                                                            <button type="button" class="btn btn-primary btn-sm"
                                                             title="Edit" data-toggle="modal"
                                                             data-target="#Edit<?php echo $ptg['id_petugas']; ?> "><i
                                                             class="fa fa-pencil"></i></button>
@@ -108,7 +105,7 @@
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
                                                                         id="exampleModalLabel">Edit Data
-                                                                    Petugas</h5>
+                                                                    User</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                 </div>
                                                                 <div class="modal-body">
@@ -183,7 +180,7 @@
 
                                                 <div class="modal-footer">
                                                     <button type="button" style="border-radius: 8px;"
-                                                    class="btn btn-secondary"
+                                                    class="btn btn-dark"
                                                     data-dismiss="modal">Close</button>
                                                     <button type="submit" style="border-radius: 8px;"
                                                     class="btn btn-primary">Simpan</button>
@@ -201,44 +198,24 @@
 
                             <!-- Akhir Modal Edit -->
 
-                            <button type="button" class="btn btn-default btn-sm"
-                            title="Ubah Password" ><i
-                            class="fa fa-lock"></i></button>
+                            <button type="button" title="Ubah Password" data-toggle="modal"
+                            data-target="#UbahPass<?php echo $ptg['id_petugas']; ?> "  class="btn btn-dark btn-sm" ><i class="fa fa-lock"></i></button>
 
-                            <button type="button" class="btn btn-default btn-sm"
-                            title="Delete" data-toggle="modal"
-                            data-target="#hapus_data<?php echo $ptg['id_petugas']; ?>"><i
-                            class="fa fa-trash-o"></i></button>
-                        </td>
+                            
+                            <button type="button" title="Delete" id="btn-hapus" class="btn btn-danger btn-sm" href="<?php echo base_url().'SuperAdmin/hapus_data/'.$ptg['id_petugas']; ?>"><i
+                                class="fa fa-trash-o"></i></button>
 
-                        <!-- Modal Popup untuk delete-->
-                        <div class="modal fade"
-                        id="hapus_data<?php echo $ptg['id_petugas']; ?>">
-                        <div class="modal-dialog">
-                            <div class="modal-content"
-                            style="margin-top:100px;">
-                            <div class="modal-header">
+                            </td>
 
-                                <h4 class="modal-title"
-                                style="text-align:center;">Anda yakin
-                            akan menghapus data ini.. ?</h4>
-                        </div>
 
-                        <div class="modal-footer"
-                        style="margin:0px; border-top:0px; text-align:center;">
-                        <a href="<?php echo base_url().'SuperAdmin/hapus_data/'.$ptg['id_petugas']; ?>"
-                            class="btn btn-danger btn-sm"
-                            id="delete_link">Hapus</a>
-                            <button type="button"
-                            class="btn btn-success btn-sm"
-                            data-dismiss="modal">Cancel</button>
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </tr>
-    <?php endforeach; ?>
-</tbody>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
 
 
 </table>
@@ -317,7 +294,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="reset" style="border-radius: 8px;" class="btn btn-secondary">Clear</button>
+                <button type="button" style="border-radius: 8px;" class="btn btn-dark">Close</button>
                 <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
             </div>
 
@@ -329,6 +306,36 @@
 </div>
 </div>
 <!-- Akhir Modal Tambah -->
+
+<?php 
+$no=1;
+foreach ($petugas as $ptg ): ?>
+    <!-- Modal Ubah Password -->
+    <div class="modal fade" id="UbahPass<?php echo $ptg['id_petugas']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ubah Password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Password Baru</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="form-group">
+                <label>Konfirmasi Password Baru</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" style="border-radius: 8px;" class="btn btn-dark">Close</button>
+            <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
+        </div>
+    </div>
+</div>
+</div>
+<?php endforeach ?>?>
 
 <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

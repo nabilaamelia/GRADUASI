@@ -12,7 +12,7 @@
 
             </div>
 
-            <div class="row clearfix header mt-3">
+            <!-- <div class="row clearfix header mt-3">
                 <div class="col-lg-10 col-md-12  col-sm-12">
                     <form action="<?= base_url('Dashboard') ?>" method='post' >
                         <div class="form-group row">
@@ -29,12 +29,12 @@
                                 </select>
                             </div>
                             <div class="col-sm-2 col-md-2 col-lg-2">
-                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">GET</button>
+                                <button class="btn btn-primary" style="border-radius: 8px;" type="submit">Tampilkan</button>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="row clearfix">
@@ -133,6 +133,19 @@
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
                         </ul>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 mt-3 ml-3">
+                        <form action="<?= base_url('Dashboard/FilterHasil') ?>" method='post' >
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+
+                                    <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil"  > 
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-success" style="border-radius: 8px;" type="submit">Tampilkan</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

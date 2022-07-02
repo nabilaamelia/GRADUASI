@@ -1,4 +1,8 @@
-
+<?php $periode = $this->ModelPeriode->tampilperiode('periode')->result_array();
+$where = array(
+    'id_petugas' => $this->session->userdata('id_petugas')
+);
+$profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
 <body>
 
     <div id="body" class="theme-cyan">
@@ -71,12 +75,35 @@
                             <a href="index.html"><img src="<?php echo base_url() ?>assets/dist/assets/icon/logo.png" alt="Mooli Logo" class="img-fluid logo"></a>
                             <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                         </div>
+                        <div class="row clearfix header mt-3">
+                            <div class="col-lg-10 col-md-12  col-sm-12">
+                                <form action="<?= base_url('Dashboard/FilterPeriode') ?>"  method='post' >
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 col-md-6 col-lg-8">
+                                            <select class="form-control show-tick select2" name="id_periode">
+                                                <?php foreach ($periode as $prd ) { ?>
+                                                    <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
+                                                        <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
+                                                    <?php } else{ ?>
+                                                        <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                                    <?php } ?>
+
+                                                <?php }?>                                    
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-lg-2">
+                                            <button class="btn btn-primary" style="border-radius: 8px;" type="submit">Tampilkan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="row clearfix header">
-                            <h4>
-                                SPK Rekomendasi Graduasi Program Keluarga Harapan
-                            </h4>
 
-
+                            <!-- <h4>
+                                <marquee>Sistem Pendukung keputusan Rekomendasi Graduasi Program Keluarga Harapan</marquee>
+                                
+                            </h4> -->
                         </div>
 
                     </div>
@@ -102,13 +129,14 @@
                 <div class="sidebar-scroll">
                     <div class="user-account">
                         <div class="user_div">
-                            <img src="<?php echo base_url() ?>uploads/<?= $this->session->userdata('foto');?>" class="user-photo" >
+                            <img src="<?php echo base_url() ?>uploads/<?= $profil['foto'];?>" class="user-photo" >
                         </div>
-                        <div class="dropdown">
+                        <div class="dropdown" width='50'>
                             <span>Welcome</span>
-                            <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $this->session->userdata('nama'); ?></strong></a>
+                            <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $profil['nama']; ?></strong></a>
                             <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                                 <li><a href="<?php echo base_url('Dashboard/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
+                                <li><a href="<?php echo base_url('Dashboard/UbahPassword') ?>"><i class="fa fa-lock"></i>Ubah Password</a></li>
                                 <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout"><i class="fa fa-power-off"></i>Logout</a></li>
                             </ul>
                         </div>
@@ -120,7 +148,7 @@
                                 <a href="<?php echo base_url('Dashboard') ?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a>
                             </li>
                             <li <?=$this->uri->segment(1) == 'PenerimaBantuan' ||  $this->uri->segment(1) == 'KriBo' || $this->uri->segment(1) == 'Periode' ? 'class="active"' : '' ?>>
-                                <a href="#Doctors" class="has-arrow"><i class="fa fa-folder"></i><span>DATA MASTER</span></a>
+                                <a href="#MasterData" class="has-arrow"><i class="fa fa-folder"></i><span>MASTER DATA</span></a>
                                 <ul>
                                     <li <?=$this->uri->segment(1) == 'Periode'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('Periode') ?>">Periode Graduasi</a></li>
                                     <li <?=$this->uri->segment(1) == 'PenerimaBantuan'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('PenerimaBantuan') ?>">Data Penerima Bantuan</a></li>
@@ -130,11 +158,11 @@
                                 </ul>
                             </li>
                             <li <?=$this->uri->segment(1) == 'CalonGraduasi' || $this->uri->segment(1) == 'DtKuisioner'   ? 'class="active"' : '' ?>>
-                                <a href="#Patients" class="has-arrow"><i class="fa fa-table"></i><span>PROSES SELEKSI</span></a>
+                                <a href="#Hasil" class="has-arrow"><i class="fa fa-table"></i><span>PROSES SELEKSI</span></a>
                                 <ul>
 
-                                    <li <?=$this->uri->segment(1) == 'CalonGraduasi'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('CalonGraduasi') ?>">Calon Graduasi PKH</a></li>
-                                    <li <?=$this->uri->segment(1) == 'DtKuisioner'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('DtKuisioner') ?>">Data Hasil Kuisioner</a></li> 
+                                    <!-- <li <?=$this->uri->segment(1) == 'CalonGraduasi'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('CalonGraduasi') ?>">Calon Graduasi PKH</a></li> -->
+                                    <li <?=$this->uri->segment(1) == 'DtKuisioner'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('DtKuisioner') ?>">Data Peserta Graduasi</a></li> 
 
                                 </ul>
 
@@ -143,9 +171,18 @@
                                 <a href="<?php echo base_url('Hasil') ?>"><i class="fa fa-th-list"></i> <span>LAPORAN HASIL SELEKSI</span></a>
                             </li>
 
+                            
+
                         </ul>
                     </nav>     
                 </div>
             </div>
+
+            <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+            <script src="<?php echo base_url() ?>assets/js/select2/select2.min.js" defer></script>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('.select2').select2();
+            });</script>
 
 

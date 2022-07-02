@@ -1,4 +1,8 @@
-
+<?php $periode = $this->ModelPeriode->tampilperiode('periode')->result_array(); 
+$where = array(
+    'id_petugas' => $this->session->userdata('id_petugas')
+);
+$profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
 <body>
 
     <div id="body" class="theme-cyan">
@@ -63,18 +67,42 @@
 
         <div id="wrapper">
 
-         <!-- Page top navbar -->
-         <nav class="navbar navbar-fixed-top">
+           <!-- Page top navbar -->
+           <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-left">
                     <div class="navbar-btn">
                         <a href="index.html"><img src="<?php echo base_url() ?>assets/dist/assets/icon/logo.png" alt="Mooli Logo" class="img-fluid logo"></a>
                         <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                     </div>
+
+                    <div class="row clearfix header mt-3">
+                        <div class="col-lg-10 col-md-12  col-sm-12">
+                            <form action="<?= base_url('SuperAdmin/FilterPeriode') ?>"  method='post' >
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-6 col-lg-8">
+                                        <select class="form-control show-tick select2" name="id_periode">
+                                            <?php foreach ($periode as $prd ) { ?>
+                                                <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
+                                                    <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
+                                                <?php } else{ ?>
+                                                    <option value="<?= $prd['id_periode'] ?>"><?= $prd['nama_periode'] ?></option>
+                                                <?php } ?>
+
+                                            <?php }?>                                    
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                        <button class="btn btn-primary" style="border-radius: 8px;" type="submit">Tampilkan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="row clearfix header">
-                        <h4>
+                        <!-- <h4>
                             SPK Rekomendasi Graduasi Program Keluarga Harapan
-                        </h4>
+                        </h4> -->
 
 
                     </div>
@@ -103,18 +131,18 @@
             <div class="sidebar-scroll">
                 <div class="user-account">
                     <div class="user_div">
-                        <img src="<?php echo base_url() ?>uploads/<?= $this->session->userdata('foto');?>" class="user-photo" >
+                        <img src="<?php echo base_url() ?>uploads/<?= $profil['foto'];?>" class="user-photo" >
                     </div>
                     <div class="dropdown">
                         <span>Welcome</span>
-                        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $this->session->userdata('nama'); ?></strong></a>
+                        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $profil['nama']; ?></strong></a>
                         <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                           <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
-                           <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
-                       </ul>
-                   </div>
-               </div>  
-               <nav id="left-sidebar-nav" class="sidebar-nav">
+                         <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
+                         <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
+                     </ul>
+                 </div>
+             </div>  
+             <nav id="left-sidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu animation-li-delay">
                     <li class="header">SUPERADMIN</li>
                     <li <?=$this->uri->segment(2) == 'Dashboard'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/Dashboard') ?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
@@ -134,8 +162,8 @@
                         <a href="#Patients" class="has-arrow"><i class="fa fa-table"></i><span>PROSES SELEKSI</span></a>
                         <ul>
 
-                            <li <?=$this->uri->segment(2) == 'FormKuis'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/FormKuis') ?>">Calon Graduasi PKH</a></li>
-                            <li <?=$this->uri->segment(2) == 'DtCalonSuper'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/DtCalonSuper') ?>">Data Hasil Kuisioner</a></li>
+                            <!-- <li <?=$this->uri->segment(2) == 'FormKuis'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/FormKuis') ?>">Calon Graduasi PKH</a></li> -->
+                            <li <?=$this->uri->segment(2) == 'DtCalonSuper'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/DtCalonSuper') ?>">Data Peserta Graduasi</a></li>
                             
                         </ul>
                         
