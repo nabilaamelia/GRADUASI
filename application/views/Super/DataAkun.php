@@ -329,7 +329,7 @@ foreach ($petugas as $ptg ): ?>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" style="border-radius: 8px;" class="btn btn-dark">Close</button>
+            <button type="button" style="border-radius: 8px;" class="btn btn-dark" data-dismiss="modal">Close</button>
             <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
         </div>
     </div>

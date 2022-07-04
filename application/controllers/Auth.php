@@ -7,7 +7,7 @@
 
     public function index()
     {
-        
+
         $this->load->view('templates/header');
         $this->load->view('login.php');
         $this->load->view('templates/footer');
@@ -40,8 +40,28 @@
                         $this->session->set_userdata('level', $row->level);
 
                         if ($this->session->userdata('level')=='Admin'){
+                            $this->session->set_flashdata(
+                                'Berhasil',
+                                '<script>
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Berhasil",
+                                    text:  "Login" ,
+
+                                    })
+                                    </script>');
                             redirect('Dashboard', 'refresh');
                         } else {
+                            $this->session->set_flashdata(
+                                'Berhasil',
+                                '<script>
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Berhasil",
+                                    text:  "Login" ,
+
+                                    })
+                                    </script>');
                             redirect('SuperAdmin/Dashboard', 'refresh');
                         }
 
@@ -77,6 +97,7 @@
                   </div>');
                 redirect('Auth');
             }
+
         }
 
         public function logout()

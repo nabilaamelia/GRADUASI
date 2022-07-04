@@ -78,6 +78,9 @@
 	})
 </script>
 
+<?php echo $this->session->flashdata('gagal')?>
+<?php echo $this->session->flashdata('Berhasil')?>
+
 
 
 

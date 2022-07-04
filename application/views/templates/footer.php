@@ -49,8 +49,7 @@
 		})
 	}
 
-
-
+	
 	var flash = $('#log').data('flash');
 	if(flash) {
 		Swal.fire({
@@ -106,7 +105,7 @@
 </script>
 
 <?php echo $this->session->flashdata('gagal')?>
-
+<?php echo $this->session->flashdata('Berhasil')?>
 
 
 

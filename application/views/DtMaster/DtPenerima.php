@@ -163,7 +163,7 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" >Close</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal" >Close</button>
                         <button type="submit" id="flash" class="btn btn-primary">Simpan</button>
                     </div>
 
@@ -227,7 +227,7 @@ foreach($penerima as $prm) : ?>
 
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" >Close</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
 

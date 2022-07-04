@@ -135,8 +135,7 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
                             <span>Welcome</span>
                             <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $profil['nama']; ?></strong></a>
                             <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                                <li><a href="<?php echo base_url('Dashboard/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
-                                <li><a href="<?php echo base_url('Dashboard/UbahPassword') ?>"><i class="fa fa-lock"></i>Ubah Password</a></li>
+                                <li><a href="<?php echo base_url('Profile') ?>"><i class="fa fa-user"></i>Profile</a></li>
                                 <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout"><i class="fa fa-power-off"></i>Logout</a></li>
                             </ul>
                         </div>

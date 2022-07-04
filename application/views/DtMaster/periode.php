@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover js-basic-example dataTable"  width="100%" cellspacing="0">
-                                       <thead>
+                                     <thead>
                                         <tr class="table-active"> 
                                             <th class="text-center"><strong>No</strong></th>
                                             <th class="text-center"><strong>Nama Periode</strong></th>
@@ -59,7 +59,7 @@
                                                 <td><?php echo $prd['tgl_dimulai'] ?></td>
                                                 <td><?php echo $prd['tgl_berakhir'] ?></td>
                                                 
-                                                <td class="text-center"> 
+                                                <td > 
                                                     <button type="button"  class="btn btn-primary btn-sm" title="Edit" data-toggle="modal" data-target="#Edit<?php echo $prd['id_periode']; ?>"><i class="fa fa-pencil"></i></button>
 
                                                     <!-- Modal Edit-->
