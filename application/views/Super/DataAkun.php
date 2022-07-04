@@ -8,7 +8,7 @@
             <div class="block-header">
                 <div class="row clearfix">
                     <div class="col-xl-6 col-md-5 col-sm-12">
-                        <h1>Data Petugas</h1>
+                        <h1>Data User</h1>
                     </div>
                     <div class="col-xl-6 col-md-7 col-sm-12 text-md-right">
                         <div class="d-flex align-items-center justify-content-between flex-wrap vivify pullUp delay-550">
@@ -294,7 +294,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" style="border-radius: 8px;" class="btn btn-dark">Close</button>
+                <button type="button" style="border-radius: 8px;" class="btn btn-dark" data-dismiss="modal">Close</button>
                 <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
             </div>
 
@@ -319,18 +319,22 @@ foreach ($petugas as $ptg ): ?>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-            <div class="form-group">
-                <label>Password Baru</label>
-                <input type="password" class="form-control" name="password" required>
-            </div>
-            <div class="form-group">
-                <label>Konfirmasi Password Baru</label>
-                <input type="password" class="form-control" name="password" required>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" style="border-radius: 8px;" class="btn btn-dark" data-dismiss="modal">Close</button>
-            <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
+            <form action="<?php echo base_url(). 'SuperAdmin/EditPass/'.$ptg['id_petugas']; ?>" method="post" enctype="multipart/form-data">  
+                <div class="form-group">
+                    <label>Password Baru</label>
+                    <input type="password" class="form-control"  name="password_baru" required>
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Password Baru</label>
+                    <input type="password" class="form-control" name="konfirmasi" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="border-radius: 8px;" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Simpan</button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

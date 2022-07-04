@@ -50,7 +50,7 @@
 
                                     })
                                     </script>');
-                            redirect('Dashboard', 'refresh');
+                            redirect(base_url('Dashboard'), 'refresh');
                         } else {
                             $this->session->set_flashdata(
                                 'Berhasil',
@@ -62,7 +62,7 @@
 
                                     })
                                     </script>');
-                            redirect('SuperAdmin/Dashboard', 'refresh');
+                            redirect(base_url('SuperAdmin/Dashboard'), 'refresh');
                         }
 
                     } else {

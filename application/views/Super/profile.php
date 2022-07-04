@@ -11,69 +11,59 @@
                 <div class="block-header">
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <h1>Profil Petugas</h1>
+                            <h1>Personal Detail</h1>
 
                         </div>
 
-                        <div class="col-sm-8 text-right">
-                            <button type="button" data-toggle="modal" data-target="#Edit<?php echo $this->session->userdata('id_petugas'); ?> " style="border-radius: 8px;" class="btn btn-primary">Edit Profil</button>
 
-                            <button type="button" data-toggle="modal" data-target="#UbahPass<?php echo $this->session->userdata('id_petugas'); ?> " style="border-radius: 8px;" class="btn btn-dark ml-3">Ubah Password</button>
-
-                        </div>
 
                     </div>
                 </div>
 
-                <div class="row clearfix ">
-                    <div class=" card  col-lg-12 col-md-12 col-sm-12">
-                        <div class="col-lg-12  container-fluid">
-                            <div class="card ">
-                                <div class="body ">
 
-                                    <div class="container mt-2 mb-5">
-                                        <div class="row" >
-                                            <div class="col-lg-4">
-                                                <img src="<?php echo base_url() ?>uploads/<?= $profil['foto'];?> " class="rounded-circle" style="width: 15rem;" alt="...">
-                                            </div>
-                                            <div class="mr-5" style="border: 1px #000000 solid; height: 250px; width: 0px;" ></div>
-                                            <div class="col-lg-4 ">
-                                                <table class="table  mt-4 ">
-                                                    <tr>
-                                                        <td><strong>Nama</strong></td>
-                                                        <td><?php echo $profil['nama']; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>No Hp</strong></td>
-                                                        <td><?php echo $profil['nohp']; ?></td>
-                                                    </tr>
+                <!-- Bismillah -->
+                <div class="row clearfix  ">
+                    <div class=" col-md-12 ">
+                        <div class="card profile-header">
+                            <div class="body text-center">
+                                <img src="<?php echo base_url() ?>uploads/<?= $profil['foto'];?>" class="rounded-circle" style="width: 15rem;" alt="">
+                                <div class="mt-3">
+                                    <h5 class="mb-0"><strong><?php echo $profil['nama']; ?></strong></h5>
+                                    <span><?php echo $profil['level']; ?></span>
+                                </div>
+                                <div class="m-t-15">
+                                    <button type="button" data-toggle="modal" data-target="#Edit<?php echo $this->session->userdata('id_petugas'); ?> " style="border-radius: 8px;" class="btn btn-primary mr-3">Edit Profil</button>
+                                    <button type="button" data-toggle="modal" data-target="#UbahPass<?php echo $this->session->userdata('id_petugas'); ?> " style="border-radius: 8px;" class="btn btn-dark">Ubah Password</button>
+                                </div>
 
-                                                    <tr>
-                                                        <td><strong>alamat</strong></td>
-                                                        <td><?php echo $profil['alamat']; ?></td>
-                                                    </tr>
 
-                                                    <tr>
-                                                        <td><strong>Status</strong></td>
-                                                        <td><?php echo $profil['level']; ?></td>
+                            </div>
+                            <div class="col-12 row">
+                                <div class="col-xl-3 col-lg-2 col-md-2">
 
-                                                    </tr>
-
-                                                </table>
-
-                                            </div>
-
+                                </div>
+                                <div class="col-xl-6 col-lg-8 col-md-8 col-sm-8  ">
+                                    <div class="card social   ">
+                                        <div class="body">
+                                            <small class="text-muted">Username: </small>
+                                            <p><?php echo $profil['username']; ?></p>
+                                            <hr>
+                                            <small class="text-muted">No Hp: </small>
+                                            <p><?php echo $profil['nohp']; ?></p>
+                                            <hr>
+                                            <small class="text-muted">Alamat: </small>
+                                            <p><?php echo $profil['alamat']; ?></p>
+                                            <hr>
 
                                         </div>
-
                                     </div>
 
                                 </div>
+                                
                             </div>
+                            
                         </div>
-
                     </div>
-
                 </div>
 
             </body>

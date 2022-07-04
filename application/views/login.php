@@ -39,14 +39,9 @@
                                     <label>Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                                 </div>
-                                <div class="form-group clearfix">
-
-                                </div>
+                                
                                 <button type="submit" class="btn btn-dark btn-lg btn-block" >LOGIN</button>
-                                <div class="bottom">
-
-
-                                </div>
+                                
                             </form>
                         </div>
 

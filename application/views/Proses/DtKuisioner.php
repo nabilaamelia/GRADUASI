@@ -168,6 +168,7 @@
 
 
                                     <div class="col-sm-12 text-right">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal" >Close</button>
                                         <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Submit</button>
 
                                     </div>
@@ -246,6 +247,7 @@
 
 
                                     <div class="col-sm-12 text-right">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal" >Close</button>
                                         <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Edit</button>
                                     </div>
 

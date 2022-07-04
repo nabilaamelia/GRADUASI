@@ -8,7 +8,7 @@
                 <div class="block-header">
                     <div class="row clearfix">
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <h1>Pesrsonal Detail</h1>
+                            <h1>Personal Detail</h1>
 
                         </div>
 
@@ -21,7 +21,7 @@
                 <!-- Bismillah -->
                 <div class="row clearfix ">
                     <div class=" col-md-12">
-                        <div class="card profile-header">
+                        <div class="card profile-header bg-theme">
                             <div class="body text-center">
                                 <img src="<?php echo base_url() ?>uploads/<?= $profil['foto'];?>" class="rounded-circle" style="width: 15rem;" alt="">
                                 <div class="mt-3">

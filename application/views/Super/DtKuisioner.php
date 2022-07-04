@@ -32,13 +32,13 @@
                                 <h5 class="mb-0"><?php echo $jumlahcl; ?></h5>
                             </div>
 
-                            <div class="mb-3 mb-xl-0">
-                                <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                            <div class="border-right pr-4 mr-4 mb-2 mb-xl-0">
+                                <div class="mb-3 mb-xl-0">
+                                    <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
+                                </div>
                             </div>
-
-
-
-                            <div class="mb-3 mb-xl-0 ml-3">
+                            
+                            <div class="mb-3 mb-xl-0 ">
                                 <a href="<?php echo base_url('SuperAdmin/ProsesHitung') ?>" style="border-radius: 8px;"  class="btn btn-warning">Proses Penilaian</a>
                             </div>
 
@@ -169,6 +169,7 @@
 
 
                                     <div class="col-sm-12 text-right">
+                                        <button type="button" class="btn btn-dark" style="border-radius: 8px;" data-dismiss="modal" >Close</button>
                                         <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Submit</button>
 
                                     </div>
@@ -211,7 +212,7 @@
 
                                         <?php $i = 0; ?>
                                         <?php  foreach ($kriteria as $ktr){  ?>
-                                           <?php foreach($kuisioner as $kuis){ 
+                                         <?php foreach($kuisioner as $kuis){ 
                                             if($kuis['id_detail_periode'] == $prm['id_detail_periode'] && $ktr['id_kriteria'] == $kuis['id_kriteria']){ ?>
                                                 <input type="hidden" name="id_kuisioner<?php echo $ktr['id_kriteria']?>" value="<?php echo $kuis['id_kuisioner']?>">
                                             <?php } ?> 
@@ -247,6 +248,7 @@
 
 
                                     <div class="col-sm-12 text-right">
+                                        <button type="button" class="btn btn-dark" style="border-radius: 8px;" data-dismiss="modal" >Close</button>
                                         <button type="submit" style="border-radius: 8px;" class="btn btn-primary">Edit</button>
                                     </div>
 

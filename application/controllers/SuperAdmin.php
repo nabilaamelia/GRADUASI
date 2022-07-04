@@ -885,6 +885,47 @@ class SuperAdmin extends CI_Controller{
         redirect('SuperAdmin/Petugas');
     }
 
+    public function EditPass($id)
+    {
+
+        $password_baru = $this->input->post('password_baru');
+        $konfirmasi  = $this->input->post('konfirmasi');
+
+        $where = array(
+            'id_petugas' => $id 
+        );
+        
+        if ($password_baru == $konfirmasi) {
+            $data = array(
+                'password' => md5($password_baru)
+            );
+            $this->db->update('petugas', $data, $where);
+            $this->session->set_flashdata(
+                'Berhasil',
+                '<script>
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil",
+                    text:  "Mengubah Password" ,
+
+                    })
+                    </script>');
+        } else {
+            $this->session->set_flashdata(
+                'gagal',
+                '<script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text:  "Konfirmasi password baru tidak sesuai" ,
+                    })
+                    </script>');
+        }
+
+        $this->session->set_flashdata('flash', ' Mengedit');
+        redirect('SuperAdmin/Petugas');
+    }
+
     public function hapus_data($id) {
         $where = array(
             'id_petugas' => $id 
