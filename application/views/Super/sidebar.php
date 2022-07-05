@@ -67,8 +67,8 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
 
         <div id="wrapper">
 
-           <!-- Page top navbar -->
-           <nav class="navbar navbar-fixed-top">
+         <!-- Page top navbar -->
+         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-left">
                     <div class="navbar-btn">
@@ -137,12 +137,12 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
                         <span>Welcome</span>
                         <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong><?php echo $profil['nama']; ?></strong></a>
                         <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                         <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
-                         <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
-                     </ul>
-                 </div>
-             </div>  
-             <nav id="left-sidebar-nav" class="sidebar-nav">
+                           <li><a href="<?php echo base_url('SuperAdmin/Profil') ?>"><i class="fa fa-user"></i>Profile</a></li>
+                           <li><a href="<?php echo base_url('Auth/logout') ?>" id="btn-logout" ><i class="fa fa-power-off"></i>Logout</a></li>
+                       </ul>
+                   </div>
+               </div>  
+               <nav id="left-sidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu animation-li-delay">
                     <li class="header">SUPERADMIN</li>
                     <li <?=$this->uri->segment(2) == 'Dashboard'  ? 'class="active"' : '' ?>><a href="<?php echo base_url('SuperAdmin/Dashboard') ?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>

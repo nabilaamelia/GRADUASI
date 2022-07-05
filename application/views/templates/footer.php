@@ -39,6 +39,7 @@
 <!-- sweetalert -->
 <script src="<?php echo base_url() ?>assets/js/sweetallert/sweetalert2.min.js"></script>
 <script type="">
+	
 	var flash = $('#flash').data('flash');
 	if(flash) {
 		Swal.fire({

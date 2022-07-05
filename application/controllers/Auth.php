@@ -73,7 +73,7 @@
                           <span aria-hidden="true">&times;</span>
                           </button>
                           </div>');
-                        redirect('Auth');
+                        redirect(base_url('Auth'));
                     }
 
                 } else {
@@ -84,7 +84,7 @@
                       <span aria-hidden="true">&times;</span>
                       </button>
                       </div>');
-                    redirect('Auth');
+                    redirect(base_url('Auth'));
                 }
 
             } else{
@@ -95,7 +95,7 @@
                   <span aria-hidden="true">&times;</span>
                   </button>
                   </div>');
-                redirect('Auth');
+                redirect(base_url('Auth'));
             }
 
         }
@@ -103,7 +103,7 @@
         public function logout()
         {
             $this->session->sess_destroy();
-            redirect('Auth');
+            redirect(base_url('Auth'));
         }
     }
 
