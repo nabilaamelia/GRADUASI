@@ -75,12 +75,13 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
                             <a href="index.html"><img src="<?php echo base_url() ?>assets/dist/assets/icon/logo.png" alt="Mooli Logo" class="img-fluid logo"></a>
                             <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                         </div>
-                        <div class="row clearfix header mt-3">
-                            <div class="col-lg-10 col-md-12  col-sm-12">
+
+                        <div class="row header mt-3">
+                            <div class="col-lg-7 col-6 d-flex align-items-center">
                                 <form action="<?= base_url('Dashboard/FilterPeriode') ?>"  method='post' >
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 col-md-6 col-lg-8">
-                                            <select class="form-control show-tick select2" name="id_periode">
+                                    <div class="w-100 form-group d-block d-lg-flex align-items-center">   
+                                        <div class="w-100 mr-3">
+                                            <select class="w-100 form-control show-tick select2" name="id_periode">
                                                 <?php foreach ($periode as $prd ) { ?>
                                                     <?php if($this->session->userdata('id_periode') == $prd['id_periode']) { ?>
                                                         <option value="<?= $prd['id_periode'] ?>"selected><?= $prd['nama_periode'] ?></option>
@@ -91,23 +92,19 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
                                                 <?php }?>                                    
                                             </select>
                                         </div>
-                                        <div class="col-sm-2 col-md-2 col-lg-2">
-                                            <button class="btn btn-primary" style="border-radius: 8px;" type="submit">Tampilkan</button>
-                                        </div>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row clearfix header">
 
-                            <!-- <h4>
-                                <marquee>Sistem Pendukung keputusan Rekomendasi Graduasi Program Keluarga Harapan</marquee>
-                                
-                            </h4> -->
+                                </div>
+                                <div class="col-3">
+                                    <div class="">
+                                        <button class="btn btn-primary" style="border-radius: 8px;" type="submit">Tampilkan</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
-                    <div class="navbar-right">
+                    <div class="navbar-right d-flex justify-content-end">
                         <div id="navbar-menu">
                             <ul class="nav navbar-nav">
 
@@ -170,7 +167,7 @@ $profil = $this->ModelPetugas->tampil_petugas($where)->row_array(); ?>
                                 <a href="<?php echo base_url('Hasil') ?>"><i class="fa fa-th-list"></i> <span>LAPORAN HASIL SELEKSI</span></a>
                             </li>
 
-                            
+
 
                         </ul>
                     </nav>     

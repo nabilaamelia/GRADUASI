@@ -7,8 +7,9 @@
 
     public function index()
     {
+        $data['judul'] = "Login";
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('login.php');
         $this->load->view('templates/footer');
         

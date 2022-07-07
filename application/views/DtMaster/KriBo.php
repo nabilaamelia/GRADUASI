@@ -21,7 +21,7 @@
                                 <div class="body">
                                     <form>
 
-                                       <div class="col-12 text-lg-right">
+                                     <div class="col-12 text-lg-right">
                                         <div>
                                             <div class="btn-group  ">
                                                 <a data-toggle="modal" style="border-radius: 8px;" data-target="#Tambah" class="btn btn-primary">Tambah Data</a>
@@ -188,7 +188,7 @@
     </div>
     
     <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     
@@ -296,7 +296,7 @@ foreach($kriteria as $ktr) : ?>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button> 
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button> 
                 </div>
                 
             </form>
@@ -343,7 +343,7 @@ foreach($kriteria as $ktr) : ?>
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
     <button type="submit" class="btn btn-primary">Simpan</button>
 </div>
 
@@ -412,7 +412,7 @@ foreach($kriteria as $ktr) : ?>
     
     
     <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
     

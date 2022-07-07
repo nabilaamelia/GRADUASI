@@ -19,6 +19,11 @@ class ModelLogin extends CI_Model {
 	{
 		$query = $this->db->query("SELECT * FROM petugas WHERE username = '$username' and password = '$password' ");
 
+		// $where = array(
+		// 	'username like binary' => $username,
+		// 	'password'		=> $password
+		// );
+
 		if ($query->num_rows()==1)
 		{
 			return $query->result();

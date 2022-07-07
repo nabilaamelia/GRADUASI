@@ -78,10 +78,10 @@ class SuperAdmin extends CI_Controller{
             'id_petugas' => $this->session->userdata('id_petugas')
         );
         $data['profil'] = $this->ModelPetugas->tampil_petugas($where)->row_array();
-        $this->load->view('super/header');
-        $this->load->view('super/sidebar');
-        $this->load->view('super/profile', $data);
-        $this->load->view('super/footer');
+        $this->load->view('Super/header');
+        $this->load->view('Super/sidebar');
+        $this->load->view('Super/profile', $data);
+        $this->load->view('Super/footer');
     }
 
     public function EditProfil()
@@ -284,7 +284,7 @@ class SuperAdmin extends CI_Controller{
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         $this->load->view('Super/header');
         $this->load->view('Super/sidebar');
-        $this->load->view('Super/KriBo', $data);
+        $this->load->view('Super/Kribo', $data);
         $this->load->view('Super/footer');
     }
 
@@ -740,6 +740,95 @@ class SuperAdmin extends CI_Controller{
         $this->load->view('Super/footer');
     }
 
+
+    public function PrintHasil($id)
+    {
+        // Memanggil id untuk tampilan laporannya
+        $where = array(
+            'detail_periode.id_periode' => $id
+        );
+        // Memanggil id untuk judul halaman print
+        $where3 = array(
+            'id_periode'  => $id
+        );
+        $data['periode'] = $this->ModelPeriode->tampil_data1($where3);
+        // memanggil nilai awal
+        $kuisioner = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
+        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        $penerima = $this->ModelCalon->tampil_detail1($where)->result_array();
+        // variabel untuk memanggil nilai max min
+        $a = 0;
+        $i = 0;
+        foreach($data['kriteria'] as $ktr){
+            $where2 = array(
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
+                'detail_periode.id_periode' => $id
+            );
+            //Menentuka nilai max min
+            $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where2)->row();
+            $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where2)->row();
+        }
+        foreach($penerima as $prm){
+            $total = 0;
+            // $b = 0;
+            // $c = 0;
+            foreach($data['kriteria'] as $ktr) {
+                $max = $ktr['max']->nilai; 
+                $min = $ktr['min']->nilai;
+                foreach($kuisioner as $ksr){
+                    if($prm['id_detail_periode'] == $ksr['id_detail_periode'] && $ktr['id_kriteria'] == $ksr['id_kriteria']){
+                        $nilai = $ksr['nilai'];
+                        // Mengitung total nilai preferensi
+                        if($ktr['atribut'] == 'Benefit'){
+                            $normalisasi = $nilai/$max;
+                            $preferensi  = $normalisasi * $ktr['bobot'];
+                            $total+= $preferensi;
+                        } else {
+                            $normalisasi = $min/$nilai;
+                            $preferensi  = $normalisasi * $ktr['bobot'];
+                            $total+= $preferensi;
+                        }
+                    }
+
+                }
+            }
+            $format = number_format($total, 2);
+            $data1 = array(
+                "total" => $format
+            );
+            $where1 = array(
+                'id_detail_periode' => $prm['id_detail_periode']
+            );
+            // memasukkan / update nilai total ke db
+            $this->ModelPenerima->edit_data($data1, $where1, 'detail_periode');
+        }
+
+        $data['hasil'] = $this->session->userdata('hasil');
+        $cek = $this->ModelPenerima->cek($where, 'detail_periode')->num_rows();
+        // menentukan hasil rekomendasi
+        $jumlah = $cek*($data['hasil']/100) ;
+        $final = number_format($jumlah, 0);
+        
+        $data['penerima'] = $this->ModelPerhitungan->peringkat($where, $final)->result_array();
+
+        $this->load->library('pdfgenerator');
+
+        // / title dari pdf
+        $data['title_pdf'] = 'Data UMKM Kabupaten Madiun';
+
+        // filename dari pdf ketika didownload
+        $file_pdf = 'UMKM Kabupaten Madiun';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        $html = $this->load->view('Hasil/view_printHasil', $data, true);
+
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+
     public function FilterHasil()
     {
         $hasil = $this->input->post('hasil');
@@ -775,9 +864,51 @@ class SuperAdmin extends CI_Controller{
 
         $this->load->view('Super/header');
         $this->load->view('Super/sidebar');
-        $this->load->view('Hasil/Perhitungan', $data);
+        $this->load->view('Super/Perhitungan', $data);
         $this->load->view('Super/footer');
     }
+
+    public function PrintDetail($id)
+    {
+        $where = array(
+            'detail_periode.id_periode'  => $id
+        );
+        $data['kuisioner'] = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
+        $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
+        $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
+        $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
+        // Memanggil id untuk judul halaman print
+        $where3 = array(
+            'id_periode'  => $id
+        );
+        $data['periode'] = $this->ModelPeriode->tampil_data1($where3);
+        // echo print_r($data['kriteria']);
+        $a = 0;
+        $i = 0;
+        foreach($data['kriteria'] AS $ktr){
+            $where = array(
+                'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
+                'detail_periode.id_periode'  => $id
+            );
+            $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();
+            $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where)->row();
+        }
+
+        $this->load->library('pdfgenerator');
+
+        // filename dari pdf ketika didownload
+        $file_pdf = 'Detail Perhitungan Rekomendasi Graduasi PKH';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        $html = $this->load->view('Hasil/view_printDetail', $data, true);
+
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+
 // Akhir Detail Perhitungan
 
 // Data Petugas

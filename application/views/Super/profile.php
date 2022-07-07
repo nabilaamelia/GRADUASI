@@ -154,3 +154,10 @@
 
 
     </html>
+
+    <script src="<?php echo base_url() ?>assets/js/select2/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url() ?>assets/js/select2/select2.min.js" defer></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.select2').select2();
+    });</script>

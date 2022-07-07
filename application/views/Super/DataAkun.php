@@ -284,7 +284,7 @@
                 <label>Status</label>
                 <select class="form-control" name="status" required>
                     <option></option>
-                    <option value="admin">Aktif</option>
+                    <option value="aktif">Aktif</option>
                     <option value="pasif">Pasif</option>
                 </select>
             </div>

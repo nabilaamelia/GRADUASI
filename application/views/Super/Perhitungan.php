@@ -9,7 +9,7 @@
 
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
-                    <a onclick="window.open(this.href); return false;" style="border-radius: 8px;" href="<?php echo base_url('Perhitungan/PrintDetail/'.$id_periode)?>" class="btn btn-dark">Cetak Detail Perhitungan  <i class="fa fa-print"></i></a>
+                    <a onclick="window.open(this.href); return false;" style="border-radius: 8px;" href="<?php echo base_url('SuperAdmin/PrintDetail/'.$id_periode)?>" class="btn btn-dark">Cetak Detail Perhitungan  <i class="fa fa-print"></i></a>
                 </div>
             </div>
         </div>
