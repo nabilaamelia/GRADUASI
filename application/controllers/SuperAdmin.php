@@ -840,15 +840,15 @@ class SuperAdmin extends CI_Controller{
 // Akhir Hasil Graduasi
 
 // Detail Perhitungan
-    public function DetailPerhitungan($id)
+    public function DetailPerhitungan()
     {
         $where = array(
-            'detail_periode.id_periode'  => $id
+            'detail_periode.id_periode'  => $this->session->userdata('id_periode')
         );
         $data['kuisioner'] = $this->ModelPerhitungan->tampil_nilaiAwal($where)->result_array();
         $data['penerima'] = $this->ModelCalon->tampil_detail($where)->result_array();
         $data['rentang_nilai'] = $this->ModelKribo->tampil_data('rentang_nilai')->result_array();
-        $data['id_periode'] = $id ;
+        $data['id_periode'] = $this->session->userdata('id_periode');
         $data['kriteria'] = $this->ModelKribo->tampil_data('kriteria')->result_array();
         // echo print_r($data['kriteria']);
         $a = 0;
@@ -856,7 +856,7 @@ class SuperAdmin extends CI_Controller{
         foreach($data['kriteria'] AS $ktr){
             $where = array(
                 'kuisioner.id_kriteria'  => $ktr['id_kriteria'],
-                'detail_periode.id_periode'  => $id
+                'detail_periode.id_periode'  => $this->session->userdata('id_periode')
             );
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();
             $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where)->row();

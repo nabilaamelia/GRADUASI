@@ -14,16 +14,16 @@ class ModelLogin extends CI_Model {
 			return false;
 		}
 	}
+	public function cek($where, $tabel){
+		$this->db->where($where);
+		return $this->db->get($tabel);
+	}
 
 	public function ceklogin($username,$password)
 	{
 		$query = $this->db->query("SELECT * FROM petugas WHERE username = '$username' and password = '$password' ");
 
-		// $where = array(
-		// 	'username like binary' => $username,
-		// 	'password'		=> $password
-		// );
-
+		
 		if ($query->num_rows()==1)
 		{
 			return $query->result();

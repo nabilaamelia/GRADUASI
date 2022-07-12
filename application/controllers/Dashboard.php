@@ -17,6 +17,7 @@ class Dashboard extends CI_Controller{
 
     public function index()
     {
+        // $this->session->set_userdata('hasil', '10');
         $id = $this->input->post('id_periode');
         $hasil = $this->session->userdata('hasil');
         $data['periodeGrafik'] = $this->ModelPeriode->tampilGrafik('periode')->result_array();

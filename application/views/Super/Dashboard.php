@@ -139,7 +139,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-4">
 
-                                        <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil"  > 
+                                        <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil (%)"  required> 
                                     </div>
                                     <div class="col-sm-2">
                                         <button class="btn btn-success" style="border-radius: 8px;" type="submit">Tampilkan</button>

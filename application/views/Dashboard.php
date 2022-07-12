@@ -130,16 +130,18 @@
                 <div class="card">
                     <div class="header">
                         <h2>Hasil Rekomendasi</h2>
+
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-lg-8 col-md-12 col-sm-12 mt-3 ml-3">
+                        <!-- <label>Inputkan nilai filter hasil (%)<span class="text-danger">*</span></label> -->
                         <form action="<?= base_url('Dashboard/FilterHasil') ?>" method='post' >
                             <div class="form-group row">
                                 <div class="col-sm-4">
 
-                                    <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil"  > 
+                                    <input class="form-control" type="number" min="1" max="100" name="hasil" value="<?php echo $this->session->userdata('hasil') ?>" placeholder="Inputkan nilai filter hasil (%)"  required> 
                                 </div>
                                 <div class="col-sm-2">
                                     <button class="btn btn-success" style="border-radius: 8px;" type="submit">Tampilkan</button>

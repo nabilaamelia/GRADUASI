@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <h7 class="ml-3"><strong>Mencari nilai max / min</strong></h2>
+                <h7 class="ml-3"><strong>Mencari nilai max / min (Berdasarkan Atribut)</strong></h2>
                     <div class="card">
                         <div class="body">
                             <div class="table-responsive">
