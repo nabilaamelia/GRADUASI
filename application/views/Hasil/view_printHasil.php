@@ -25,11 +25,46 @@
 	</head>
 	<body>
 		
-		<div align="center">
-			<h2 style="margin-top: 5px;"> Hasil Rekomendasi Graduasi PKH </h2>
-			<?php foreach ($periode as $prd ) { ?>
-				<h2 style="margin-top: 5px;"> <?php echo $prd['nama_periode']?> </h2>
+		<div align="center" style="margin-bottom: 5px;">
+			<h2 style="margin-top: 0px; margin-bottom: 0px;">HASIL REKOMENDASI GRADUASI PKH</h2>
+			<h2 style="margin-top: 0px; margin-bottom: 0px;">DESA SUGIHWARAS</h2>
+			<?php function tgl_indo($tgl){
+				$bulan=array(
+					1=>'Januari',
+					'Februari',
+					'Maret',
+					'April',
+					'Mei',
+					'Juni',
+					'Juli',
+					'Agustus',
+					'September',
+					'Oktober',
+					'November',
+					'Desember'
+				);
+
+				$pecahkan=explode('-', $tgl);
+				return $pecahkan[2]. ' '. $bulan[(int)$pecahkan[1]]. ' '. $pecahkan[0];
+
+				// Variabel pecahkan 0 = tanggal
+				// variabel pecahkan 1 = bulan
+				// variabel pecahkan 2 = tahun
+
+			} ?>
+			<?php foreach ($periode as $prd ) {?>
+				<h2 style="margin-top: 0px; margin-bottom: 0px;"><?php echo $prd['nama_periode']?> </h2>
+				<h3 style="margin-top: 0px; margin-bottom: 0px;">(<?php echo tgl_indo($prd['tgl_dimulai']);?> - <?php echo tgl_indo($prd['tgl_berakhir']);?>)</h3>
 			<?php }?>
+			<div style="height: 5px;"></div>
+
+			<br>
+			<div style="width: 100%; background-color: black; height: 3px;"></div>
+			<div style="width: 100%; background-color: black; height: 1px; margin-top: 1px; margin-bottom: 30px;"></div>
+
+
+
+			
 		</div>
 
 		<div>

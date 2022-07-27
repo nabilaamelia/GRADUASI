@@ -12,6 +12,7 @@ class Perhitungan extends CI_Controller{
                 </button>
                 </div>');
             redirect('Auth');
+            date_default_timezone_set("Asia/Jakarta");
         }
     }
 
@@ -38,6 +39,8 @@ class Perhitungan extends CI_Controller{
             $data['kriteria'][$a++]['max']= $this->ModelPerhitungan->getmax($where)->row();
             $data['kriteria'][$i++]['min']= $this->ModelPerhitungan->getmin($where)->row();
         }
+        // echo print_r($data['kriteria']);
+        // exit;
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');

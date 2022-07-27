@@ -316,10 +316,8 @@
                                                                 $total+= $preferensi;
                                                             }
 
-
                                                         }
                                                     } 
-
 
                                                 } ?>
 

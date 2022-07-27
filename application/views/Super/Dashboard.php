@@ -129,12 +129,12 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Hasil Rekomendasi</h2>
+                            <div class="text-center"><h2><strong>Grafik Hasil Rekomendasi Graduasi PKH</strong></h2></div>
                             <ul class="header-dropdown dropdown">
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="fa fa-expand"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-8 col-md-12 col-sm-12 mt-3 ml-3">
+                        <div class="col-lg-8 col-md-12 col-sm-12 mt-3 ml-5">
                             <form action="<?= base_url('SuperAdmin/FilterHasil') ?>" method='post' >
                                 <div class="form-group row">
                                     <div class="col-sm-4">
@@ -147,7 +147,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card shadow mb-4">
+                        <!-- <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary"></h6>
                             </div>
@@ -157,14 +157,26 @@
                                 </div>
 
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </div> -->
 
-            </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
 
-        </div>
-    </div>
+                            <div class="card-body">
+                                <div class="recent-report__chart">
+                                  <div id="grafik2"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+          </div>
+
+      </div>
+
+  </div>
+</div>
 
 </div>
 </div>
@@ -281,4 +293,86 @@ tooltips: {
 });
 </script>
 
+<script type="text/javascript">
+    'use strict';
+    $(function () {
+        grafik2();
+    });
+    function grafik2() {
+        var options = {
+            chart: {
+                height: 250,
+                type: 'line',
+                shadow: {
+                    enabled: false,
+                    color: '#bbb',
+                    top: 3,
+                    left: 2,
+                    blur: 3,
+                    opacity: 1
+                },
+            },
+            stroke: {
+                width: 7,
+                curve: 'smooth'
+            },
+            series: [{
+                name: 'Jumlah yang direkomendasikan',
+                data: [<?php echo $jumlah ?>]
+            }],
+            xaxis: {
+                type: 'text',
+                categories: [<?php echo $nama ?>],
+                labels: {
+                    style: {
+                        colors: '#9aa0ac',
+                    }
+                }
+            },
+
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ['#FDD835'],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 100, 100, 100]
+                },
+            },
+            markers: {
+                size: 4,
+                opacity: 0.9,
+                colors: ["#FFA41B"],
+                strokeColor: "#fff",
+                strokeWidth: 2,
+
+                hover: {
+                    size: 7,
+                }
+            },
+            yaxis: {
+                min: 0,
+                
+                title: {
+                    text: 'Jumlah yang direkomendasikan ',
+                },
+                labels: {
+                    style: {
+                        color: '#9aa0ac',
+                    }
+                }
+            }
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#grafik2"),
+            options
+            );
+
+        chart.render();
+    }
+</script>
 
